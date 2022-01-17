@@ -52,10 +52,7 @@ interface musicaProps{
     dificuldade: 0.1| 0.2|0.25 |0.3|0.35 |0.4|0.45 |0.5|0.55|0.6
 }
 
-import { loadGetInitialProps } from "next/dist/shared/lib/utils";
 import Lacuna from "../components/Lacuna"
-
-
 
 export default function Musica(props: musicaProps){
 
@@ -64,12 +61,14 @@ export default function Musica(props: musicaProps){
     
     const musicaCortada = cortaMusica(musicaAPI)
     const numeros = geraNumerosAleatorios(musicaCortada.length)
-    //const musicaFinal = musicaCortada.map((texto, indice)=>numeros.includes(indice) ? <Lacuna key={texto+indice} palavra = {texto}/> : <p key = {texto+indice}>{texto}</p>)
-    const musicaFinal = musicaCortada.map((texto, indice)=><Lacuna key={texto+indice} palavra = {texto}/>)
+  const musicaFinal = musicaCortada.map((texto, indice)=>numeros.includes(indice) ? <Lacuna key={texto+indice} palavra = {texto}/> : <p key = {texto+indice}>{texto}</p>)
 
     return(<main>
-        <Lacuna palavra="teste"/>
-        {/* {musicaFinal} */}
+        {/* <Lacuna palavra="teste"/> */}
+        {/* {for(elemento in musicaFinal){
+
+        }} */}
+        {musicaCortada.map((texto, indice)=>numeros.includes(indice) ? <Lacuna key={texto+indice} palavra = {texto}/> : <p key = {texto+indice}>{texto}</p>)}
         <p>oj</p>
     </main>)
 
