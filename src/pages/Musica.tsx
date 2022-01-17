@@ -61,15 +61,12 @@ export default function Musica(props: musicaProps){
     
     const musicaCortada = cortaMusica(musicaAPI)
     const numeros = geraNumerosAleatorios(musicaCortada.length)
-  const musicaFinal = musicaCortada.map((texto, indice)=>numeros.includes(indice) ? <Lacuna key={texto+indice} palavra = {texto}/> : <p key = {texto+indice}>{texto}</p>)
+    //const musicaFinal = musicaCortada.map((texto, indice)=>numeros.includes(indice) ? <Lacuna key={texto+indice} palavra = {texto}/> : <p key = {texto+indice}>{texto}</p>)
+    const musicaFinal = musicaCortada.map((texto, indice)=> numeros.includes(indice )?<Lacuna key={texto+indice} palavra = {texto}/> :"")
 
-    return(<main>
+    return(<main className="bg-red-300">
         {/* <Lacuna palavra="teste"/> */}
-        {/* {for(elemento in musicaFinal){
-
-        }} */}
-        {musicaCortada.map((texto, indice)=>numeros.includes(indice) ? <Lacuna key={texto+indice} palavra = {texto}/> : <p key = {texto+indice}>{texto}</p>)}
-        <p>oj</p>
+        {musicaFinal}
     </main>)
 
 
