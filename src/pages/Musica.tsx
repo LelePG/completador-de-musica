@@ -120,10 +120,8 @@ export default function Musica(props: musicaProps){
     })
 
     const musicaFinal = musicaComLacunas.map((linha) =>{
-        let novaLinha:any = linha.map((palavra,indice) => typeof(palavra)==="string" ?  <span key = {palavra+indice}>{palavra }</span> : palavra)
-        novaLinha.push("\n")
-        console.log(novaLinha)
-        return novaLinha
+        let novaLinha:any = linha.map((palavra,indice) => typeof(palavra)==="string" ?  <span key = {palavra+indice}>{palavra+" "}</span> : palavra)
+        return <p className="flex whitespace-pre">{novaLinha}</p>
     })
 
     console.log(musicaFinal)
