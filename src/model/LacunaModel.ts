@@ -54,7 +54,7 @@ export default class LacunaModel {
 		const corFundo = estaCorreto ? fundoCorreto : fundoErrado;
 		return new LacunaModel(
 			this.palavra,
-			this.aberto,
+			false, //fecha a exibição do texto
 			estaCorreto,
 			this.textoUsuario,
 			corFundo

@@ -1,10 +1,12 @@
 export default class MusicaModel{
     private _musicaTexto: string;
     private _dificuldade: number;
+    private _nome : string;
     private _musicaFormatada: any;
     
     
-    constructor(musicaTexto: string, dificuldade:number){
+    constructor(nome: string, musicaTexto: string, dificuldade:number){
+        this._nome = nome
         this._musicaTexto = musicaTexto
         this._dificuldade = dificuldade
         this._musicaFormatada = this.formatarMusica(musicaTexto)
@@ -50,6 +52,10 @@ export default class MusicaModel{
 
     public get musicaFormatada(): any {
         return this._musicaFormatada;
+    }
+
+    public get nome(): any {
+        return this._nome;
     }
 
 

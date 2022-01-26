@@ -35,7 +35,7 @@ export default function Lacuna(props: lacunaProps) {
 	};
 
 	return (
-		<div className="flex w-36 h-8 p-0.5 border rounded-md border-black mr-1">
+		<div className="flex w-32 h-8 p-0.5 border rounded-md border-black mr-1">
 			{parteVisivel()}
 			<aside className="w-3">
 				{Check(corrigePalavra,3)}
