@@ -53,19 +53,21 @@ interface musicaProps {
 
 import Lacuna from "../components/Lacuna";
 import MusicaModel from "../model/MusicaModel";
+import {useState, useEffect} from 'react'
+
 
 export default function Musica(props: musicaProps) {
-	const musica = new MusicaModel(musicaAPI, props.dificuldade);
-	const musicaFinal = musica.musicaFormatada.map((linha, indiceLinha) => {
-        let novaLinha = linha.map((palavra, indicePalavra) =>{
-			return palavra.temLacuna ? (<Lacuna palavra={palavra.texto} key={palavra + indiceLinha + indicePalavra} />) 
-                            : (<span key={palavra + indiceLinha + indicePalavra}>{palavra.texto + " "}</span>)
-            }
-		);
+	const musica=new MusicaModel(musicaAPI, props.dificuldade);
+    let musicaFinal = [];
+    
+	musicaFinal = musica.musicaFormatada.map((linha, indiceLinha) => {
+         let novaLinha = linha.map((palavra, indicePalavra) =>{
+		 	return palavra.temLacuna ? (<Lacuna palavra={palavra.texto} key={palavra + indiceLinha + indicePalavra} />) 
+                             : (<span key={palavra + indiceLinha + indicePalavra}>{palavra.texto + " "}</span>)      
+    } );
+
 		return <p key = {indiceLinha}className="flex whitespace-pre">{novaLinha}</p>;
 	});
-
-    console.log(musicaFinal)
 
 	return <main className="bg-red-300 flex flex-col">
         {musicaFinal}

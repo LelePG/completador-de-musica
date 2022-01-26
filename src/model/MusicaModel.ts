@@ -14,7 +14,7 @@ export default class MusicaModel{
         const musicaQuebrada = musica.split("\n").map((linha) => linha.split(" "))
         const musicaEmObjeto = musicaQuebrada.map(linha =>{
             const linhaEmObjeto = linha.map(palavra => {
-                let lacuna = this.chanceDeModificacao() >= 80  ? true :false
+                let lacuna = this.chanceDeModificacao() >= 80 && this.validaPraTroca(palavra) ? true :false
                 return {texto: palavra, temLacuna: lacuna }
             })
             return linhaEmObjeto
@@ -22,8 +22,9 @@ export default class MusicaModel{
         return musicaEmObjeto
     }
 
-    private terminaSemPontuacao(palavra: string){
-        return palavra.endsWith(" ") || palavra.endsWith("\n")
+    private validaPraTroca(palavra: string){
+        const palavraValida = palavra.trim().match(/^[a-zA-Z ]+/)
+        return !!palavraValida
     }
 
     public chanceDeModificacao(){
