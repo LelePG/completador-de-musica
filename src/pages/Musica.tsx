@@ -51,10 +51,9 @@ interface musicaProps {
 	dificuldade: 0.1 | 0.2 | 0.25 | 0.3 | 0.35 | 0.4 | 0.45 | 0.5 | 0.55 | 0.6;
 }
 
+import BotaoMusica from "../components/BotaoMusica";
 import Lacuna from "../components/Lacuna";
 import MusicaModel from "../model/MusicaModel";
-import {useState, useEffect} from 'react'
-
 
 export default function Musica(props: musicaProps) {
 	const musica=new MusicaModel("Heroes", musicaAPI, props.dificuldade);
@@ -73,6 +72,8 @@ export default function Musica(props: musicaProps) {
             <h1 className="text-xl font-bold place-self-center mb-4">{musica.nome}</h1>
             {musicaRenderizavel}
             </section>
-        
+        <aside className="">
+            <BotaoMusica texto="teste" callback={() =>console.log("oi")} cor="border-black border-4 p-4"/>
+        </aside>
         </main>;
 }
