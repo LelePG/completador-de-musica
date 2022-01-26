@@ -66,7 +66,7 @@ export default function Musica(props: musicaProps) {
                              : (<span key={palavra + indiceLinha + indicePalavra}>{palavra.texto + " "}</span>)      
     } );
 
-		return <p key = {indiceLinha}className="flex whitespace-pre">{novaLinha}</p>;
+		return <div key = {indiceLinha}className="flex whitespace-pre h-10">{novaLinha}</div>;
 	});
 
 	return <main className="bg-red-300 flex flex-col">

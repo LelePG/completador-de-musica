@@ -23,8 +23,9 @@ export default class MusicaModel{
     }
 
     private validaPraTroca(palavra: string){
-        const palavraValida = palavra.trim().match(/^[a-zA-Z ]+/)
-        return !!palavraValida
+        const palavraInvalida = palavra.endsWith("?")|| palavra.endsWith("!")|| palavra.endsWith(",")||
+         palavra.endsWith(")")|| palavra.startsWith("(")|| palavra.endsWith(":")|| palavra.endsWith(";")
+        return !palavraInvalida
     }
 
     public chanceDeModificacao(){

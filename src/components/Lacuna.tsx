@@ -35,12 +35,12 @@ export default function Lacuna(props: lacunaProps) {
 	};
 
 	return (
-		<div className="flex gap-2 w-44 h-12 p-2 border rounded-md border-black">
+		<div className="flex w-36 h-8 p-0.5 border rounded-md border-black mr-1">
 			{parteVisivel()}
-			<div className="w-5">
-				{Check(corrigePalavra,4)}
-				{Lampada(alteraVisibilidade, 4)}
-			</div>
+			<aside className="w-3">
+				{Check(corrigePalavra,3)}
+				{Lampada(alteraVisibilidade, 3)}
+			</aside>
 		</div>
 	);
 }
