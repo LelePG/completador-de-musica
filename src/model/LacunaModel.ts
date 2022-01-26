@@ -19,7 +19,7 @@ export default class LacunaModel {
 		this._fundoInput = fundoInput;
 	}
 
-	abreLacuna(): LacunaModel {
+	public abreLacuna(): LacunaModel {
 		return new LacunaModel(
 			this.palavra,
 			true,
@@ -29,7 +29,7 @@ export default class LacunaModel {
 		);
 	}
 
-	fechaLacuna(): LacunaModel {
+	public fechaLacuna(): LacunaModel {
 		return new LacunaModel(
 			this.palavra,
 			false,
@@ -39,7 +39,7 @@ export default class LacunaModel {
 		);
 	}
 
-	alteraVisibilidadeLacuna(): LacunaModel {
+	public alteraVisibilidadeLacuna(): LacunaModel {
 		return new LacunaModel(
 			this.palavra,
 			!this.aberto,
@@ -49,7 +49,7 @@ export default class LacunaModel {
 		);
 	}
 
-	corrijeLacuna(fundoCorreto: string, fundoErrado: string): LacunaModel {
+	public corrijeLacuna(fundoCorreto: string, fundoErrado: string): LacunaModel {
 		const estaCorreto = this.palavra === this.textoUsuario;
 		const corFundo = estaCorreto ? fundoCorreto : fundoErrado;
 		return new LacunaModel(
@@ -61,7 +61,7 @@ export default class LacunaModel {
 		);
 	}
 
-	escreveLacuna(texto: string): LacunaModel {
+	public escreveLacuna(texto: string): LacunaModel {
 		return new LacunaModel(
 			this.palavra,
 			this.aberto,
