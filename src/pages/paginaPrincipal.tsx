@@ -1,4 +1,5 @@
-import BotaoMusica from "../components/BotaoMusica";
+import { useRouter } from "next/router";
+import BotaoMusica from "../components/Botao";
 import Musica from "../components/Musica";
 
 let musicaAPI = `I, I will be king
@@ -52,17 +53,17 @@ Oh-oh-oh-oh, oh-oh-oh-oh, just for one day`;
 
 
 export default function PaginaPrincipal(){
-    const resorteiaLacunas= () =>  window.location.reload()
-    
+    const router = useRouter()
 
     return (
     <main className="flex justify-center m-5 pb-16" >
         <Musica nomeMusica="Heroes" musica = {musicaAPI} dificuldade={10}/>
         <footer className="fixed bottom-3 w-3/4 lg:w-2/4 h-25 
                             flex justify-center">
-        <BotaoMusica texto="Corrigir" callback={()=>{}} cor = "red"/>
-        <BotaoMusica texto="Resortear lacunas" callback={()=>resorteiaLacunas()} cor = "green"/>
-        <BotaoMusica texto="Procurar nova música" callback={()=>console.log("oi")} cor = "blue"/>
+
+        <BotaoMusica texto="Corrigir" callback={()=>{}} cor = "red" href="/?corrige=true"/>
+        <BotaoMusica texto="Resortear lacunas" callback={()=>{}} cor = "green" href ="/musica"/>
+        <BotaoMusica texto="Procurar nova música" callback={()=>console.log("oi")} cor = "blue" href="/"/>
 
         </footer>
     </main>)

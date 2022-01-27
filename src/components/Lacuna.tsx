@@ -4,14 +4,20 @@ interface lacunaProps {
 	corrigido?: boolean 
 }
 
-import { useState } from "react";
+import { useRouter } from "next/router";
+import {  useEffect, useState } from "react";
 import LacunaModel from "../model/LacunaModel";
 import { Check, Lampada } from "./Icones";
 
 export default function Lacuna(props: lacunaProps) {
-	const [lacunaAtual, setLacunaAtual] = useState(
-		props.corrigido?new LacunaModel(props.palavra,false, false, props.inputUsuario).corrijeLacuna("bg-green-300", "bg-red-300") :new LacunaModel(props.palavra)
-	);
+	const {query} = useRouter()
+	const [lacunaAtual, setLacunaAtual] = useState(new LacunaModel(props.palavra));
+
+	useEffect(() =>{
+		if(query.corrige){
+			console.log("tem que corrigir isso dai")
+		}
+	}, [query])
 
 	const parteVisivel = () => {
 		const inputConfig = (
