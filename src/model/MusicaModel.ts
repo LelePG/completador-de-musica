@@ -16,7 +16,7 @@ export default class MusicaModel{
         const musicaQuebrada = musica.split("\n").map((linha) => linha.split(" "))
         const musicaEmObjeto = musicaQuebrada.map(linha =>{
             const linhaEmObjeto = linha.map(palavra => {
-                let lacuna = this.chanceDeModificacao() >= (this.dificuldade/2) && this.validaPraTroca(palavra) ? true :false
+                let lacuna = this.chanceDeModificacao() <= (this.dificuldade) && this.validaPraTroca(palavra) ? true :false
                 return {texto: palavra, temLacuna: lacuna }
             })
             return linhaEmObjeto
@@ -31,9 +31,8 @@ export default class MusicaModel{
     }
 
     public chanceDeModificacao(){
-        const num = Math.random() ;
-        const chance = Math.round(num * (this.dificuldade));
-        return chance
+        const probabililade = Math.random() * 100
+        return  probabililade
     };
 
     public random(min = 0, max = 50) {

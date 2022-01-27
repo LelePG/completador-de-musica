@@ -48,7 +48,7 @@ Oh-oh-oh-oh, oh-oh-oh-oh, just for one day`;
 
 interface musicaProps {
 	quantidadeLacunas: number;
-	dificuldade: 0.1 | 0.2 | 0.25 | 0.3 | 0.35 | 0.4 | 0.45 | 0.5 | 0.55 | 0.6;
+	dificuldade: 10 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55 | 60;
 }
 
 import BotaoMusica from "../components/BotaoMusica";
