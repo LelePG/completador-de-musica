@@ -1,10 +1,11 @@
 import '../styles/globals.css'
 
-import Musica from "./Musica"
+import Musica from "../components/Musica"
 import Lacuna from '../components/Lacuna'
+import PaginaPrincipal from "./paginaPrincipal"
 
 function MyApp({ Component, pageProps }) {
-  return <Musica quantidadeLacunas = {20} dificuldade = {50} />
+  return <PaginaPrincipal/>
   // return <Lacuna palavra = "teste"/>
 }
 
