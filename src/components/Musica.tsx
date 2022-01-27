@@ -8,14 +8,11 @@ interface musicaProps {
 import Lacuna from "./Lacuna";
 import MusicaModel from "../model/MusicaModel";
 
-function corrigeTodasLacunas(){
-
-}
 
 export default function Musica(props: musicaProps) {
 	const musica = new MusicaModel(props.nomeMusica, props.musica, props.dificuldade);
 
-	const musicaRenderizavel = musica.musicaFormatada.map(
+	const musicaRenderizavel: [JSX.Element] = musica.musicaFormatada.map(
 		(linha, indiceLinha) => {
 			let novaLinha = linha.map((palavra, indicePalavra) => {
 				return palavra.temLacuna ? (
@@ -29,7 +26,6 @@ export default function Musica(props: musicaProps) {
 					</span>
 				);
 			});
-
 			return (
 				<div key={indiceLinha} className="flex whitespace-pre h-10">
 					{novaLinha}

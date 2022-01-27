@@ -1,4 +1,3 @@
-import { useState } from "react";
 import BotaoMusica from "../components/BotaoMusica";
 import Musica from "../components/Musica";
 
@@ -52,15 +51,17 @@ Oh-oh-oh-oh, oh-oh-oh-oh, just for one day`;
 
 
 
-
 export default function PaginaPrincipal(){
+    const resorteiaLacunas= () =>  window.location.reload()
+    
+
     return (
     <main className="flex justify-center m-5 pb-16" >
         <Musica nomeMusica="Heroes" musica = {musicaAPI} dificuldade={10}/>
         <footer className="fixed bottom-3 w-3/4 lg:w-2/4 h-25 
                             flex justify-center">
         <BotaoMusica texto="Corrigir" callback={()=>{}} cor = "red"/>
-        <BotaoMusica texto="Resortear lacunas" callback={()=>console.log("oi")} cor = "green"/>
+        <BotaoMusica texto="Resortear lacunas" callback={()=>resorteiaLacunas()} cor = "green"/>
         <BotaoMusica texto="Procurar nova música" callback={()=>console.log("oi")} cor = "blue"/>
 
         </footer>

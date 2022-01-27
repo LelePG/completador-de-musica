@@ -1,5 +1,7 @@
 interface lacunaProps {
 	palavra: string;
+	inputUsuario?: string;
+	corrigido?: boolean 
 }
 
 import { useState } from "react";
@@ -8,7 +10,7 @@ import { Check, Lampada } from "./Icones";
 
 export default function Lacuna(props: lacunaProps) {
 	const [lacunaAtual, setLacunaAtual] = useState(
-		new LacunaModel(props.palavra)
+		props.corrigido?new LacunaModel(props.palavra,false, false, props.inputUsuario).corrijeLacuna("bg-green-300", "bg-red-300") :new LacunaModel(props.palavra)
 	);
 
 	const parteVisivel = () => {
