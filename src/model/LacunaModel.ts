@@ -3,19 +3,23 @@ export default class LacunaModel {
 	private _aberto: boolean;
 	private _correto: boolean;
 	private _textoUsuario: string;
+	private _fundoPadrao: string;
 	private _fundoInput: string;
+
 
 	constructor(
 		palavra: string,
 		aberto: boolean = false,
 		correto: boolean = false,
 		textoUsuario = "",
+		fundoPadrao = "white",
 		fundoInput: string = ""
 	) {
 		this._palavra = palavra;
 		this._aberto = aberto;
 		this._correto = correto;
 		this._textoUsuario = textoUsuario;
+		this._fundoPadrao = fundoPadrao
 		this._fundoInput = fundoInput;
 	}
 
@@ -25,6 +29,7 @@ export default class LacunaModel {
 			true,
 			this.correto,
 			this.textoUsuario,
+			this.fundoPadrao,
 			this.fundoInput
 		);
 	}
@@ -35,6 +40,7 @@ export default class LacunaModel {
 			false,
 			this.correto,
 			this.textoUsuario,
+			this.fundoPadrao,
 			this.fundoInput
 		);
 	}
@@ -45,6 +51,7 @@ export default class LacunaModel {
 			!this.aberto,
 			this.correto,
 			this.textoUsuario,
+			this.fundoPadrao,
 			this.fundoInput
 		);
 	}
@@ -57,6 +64,7 @@ export default class LacunaModel {
 			false, //fecha a exibição do texto
 			estaCorreto,
 			this.textoUsuario,
+			this.fundoPadrao,
 			corFundo
 		);
 	}
@@ -67,7 +75,19 @@ export default class LacunaModel {
 			this.aberto,
 			this.correto,
 			texto,
+			this.fundoPadrao,
 			this.fundoInput
+		);
+	}
+
+	public limpaLacuna(): LacunaModel {
+		return new LacunaModel(
+			this.palavra,
+			this.aberto,
+			this.correto,
+			"",
+			this.fundoPadrao,
+			this.fundoPadrao
 		);
 	}
 
@@ -89,5 +109,8 @@ export default class LacunaModel {
 
 	public get fundoInput(): string {
 		return this._fundoInput;
+	}
+	public get fundoPadrao(): string {
+		return this._fundoPadrao;
 	}
 }

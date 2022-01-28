@@ -26,7 +26,7 @@ export default class MusicaModel{
 
     private validaPraTroca(palavra: string){
         const palavraInvalida = palavra.endsWith("?")|| palavra.endsWith("!")|| palavra.endsWith(",")||
-         palavra.endsWith(")")|| palavra.startsWith("(")|| palavra.endsWith(":")|| palavra.endsWith(";")
+         palavra.endsWith(")")|| palavra.startsWith("(")|| palavra.endsWith(":")|| palavra.endsWith(";") || !palavra.trim()
         return !palavraInvalida
     }
 

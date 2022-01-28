@@ -12,14 +12,14 @@ export default function Lacuna(props: lacunaProps) {
 
 	useEffect(() =>{
 		window.addEventListener("ativaCorrecao", () => {corrigePalavra()})
+		window.addEventListener("limpaLacunas", ()=> limpaLacuna())
 	}, [lacunaAtual,setLacunaAtual])
 	
-	const alteraVisibilidade = () => {
-		setLacunaAtual(lacunaAtual.alteraVisibilidadeLacuna());
-	};
-	const corrigePalavra = () => {
-		setLacunaAtual(lacunaAtual.corrijeLacuna("bg-green-300", "bg-red-300"));
-	};
+	const alteraVisibilidade = () => setLacunaAtual(lacunaAtual.alteraVisibilidadeLacuna())
+	const corrigePalavra = () => setLacunaAtual(lacunaAtual.corrijeLacuna("bg-green-300", "bg-red-300"));
+	const alteraTexto = (texto:string)=> setLacunaAtual(lacunaAtual.escreveLacuna(texto))	
+	const limpaLacuna = ()=> setLacunaAtual(lacunaAtual.limpaLacuna())	
+
 
 	const parteVisivel = () => {
 		const inputConfig = (
@@ -27,7 +27,7 @@ export default function Lacuna(props: lacunaProps) {
 				className={`w-full rounded-md border border-black text-center ${lacunaAtual.fundoInput}`}
 				value={lacunaAtual.textoUsuario}
 				onChange={(e) =>
-					setLacunaAtual(lacunaAtual.escreveLacuna(e.target.value))
+					alteraTexto(e.target.value)
 				}
 				type="text"
 			/>
