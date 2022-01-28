@@ -1,7 +1,7 @@
 interface lacunaProps {
 	palavra: string;
 	inputUsuario?: string;
-	corrigido?: boolean 
+	ativaCorrecao: boolean 
 }
 
 import { useRouter } from "next/router";
@@ -10,14 +10,17 @@ import LacunaModel from "../model/LacunaModel";
 import { Check, Lampada } from "./Icones";
 
 export default function Lacuna(props: lacunaProps) {
-	const {query} = useRouter()
 	const [lacunaAtual, setLacunaAtual] = useState(new LacunaModel(props.palavra));
-
+const router = useRouter()
 	useEffect(() =>{
-		if(query.corrige){
-			console.log("tem que corrigir isso dai")
-		}
-	}, [query])
+		const a = router.events.on("routeChangeStart", (url) => {
+			if(url.endsWith( "corrige=true")){
+				corrigePalavra()
+			}
+			
+		throw `routeChange aborted. This error can be safely ignored - https://github.com/zeit/next.js/issues/2476.`})
+		
+	}, [router])
 
 	const parteVisivel = () => {
 		const inputConfig = (

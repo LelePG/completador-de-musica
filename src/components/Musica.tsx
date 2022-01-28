@@ -2,11 +2,13 @@
 interface musicaProps {
 	nomeMusica:string;
 	musica:string;
+	ativaCorrecao:boolean
 	dificuldade: 10 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55 | 60;
 }
 
 import Lacuna from "./Lacuna";
 import MusicaModel from "../model/MusicaModel";
+import { useState } from "react";
 
 
 export default function Musica(props: musicaProps) {
@@ -19,6 +21,7 @@ export default function Musica(props: musicaProps) {
 					<Lacuna
 						palavra={palavra.texto}
 						key={palavra + indiceLinha + indicePalavra}
+						ativaCorrecao = {props.ativaCorrecao}
 					/>
 				) : (
 					<span key={palavra + indiceLinha + indicePalavra}>
