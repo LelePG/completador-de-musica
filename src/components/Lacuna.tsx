@@ -20,7 +20,7 @@ const router = useRouter()
 		// 	}
 		// throw `routeChange aborted. This error can be safely ignored - https://github.com/zeit/next.js/issues/2476.`})
 		window.addEventListener("ativaCorrecao", () => {corrigePalavra()})
-	}, [])
+	}, [lacunaAtual,setLacunaAtual])
 
 	const parteVisivel = () => {
 		const inputConfig = (

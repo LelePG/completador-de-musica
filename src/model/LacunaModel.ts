@@ -50,7 +50,7 @@ export default class LacunaModel {
 	}
 
 	public corrijeLacuna(fundoCorreto: string, fundoErrado: string): LacunaModel {
-		const estaCorreto = this.palavra === this.textoUsuario;
+		const estaCorreto = this.palavra.toLowerCase() === this.textoUsuario.toLowerCase();
 		const corFundo = estaCorreto ? fundoCorreto : fundoErrado;
 		return new LacunaModel(
 			this.palavra,
