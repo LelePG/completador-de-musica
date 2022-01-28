@@ -13,14 +13,14 @@ export default function Lacuna(props: lacunaProps) {
 	const [lacunaAtual, setLacunaAtual] = useState(new LacunaModel(props.palavra));
 const router = useRouter()
 	useEffect(() =>{
-		const a = router.events.on("routeChangeStart", (url) => {
-			if(url.endsWith( "corrige=true")){
-				corrigePalavra()
-			}
-			
-		throw `routeChange aborted. This error can be safely ignored - https://github.com/zeit/next.js/issues/2476.`})
-		
-	}, [router])
+		// // const a = router.events.on("routeChangeStart", (url) => {
+		// 	if(url.endsWith( "corrige=true")){
+		// 		corrigePalavra()
+		// 		router.events.emit("routeChangeError")
+		// 	}
+		// throw `routeChange aborted. This error can be safely ignored - https://github.com/zeit/next.js/issues/2476.`})
+		window.addEventListener("ativaCorrecao", () => {corrigePalavra()})
+	}, [])
 
 	const parteVisivel = () => {
 		const inputConfig = (

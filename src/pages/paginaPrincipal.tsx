@@ -69,7 +69,7 @@ export default function PaginaPrincipal(){
         <footer className="fixed bottom-3 w-3/4 lg:w-2/4 h-25 
                             flex justify-center">
 
-        <BotaoMusica texto="Corrigir" callback={()=>{}} cor = "red" href="/?corrige=true"/>
+        <BotaoMusica texto="Corrigir" callback={()=>{window.dispatchEvent(new CustomEvent("ativaCorrecao"))}} cor = "red" href="/?corrige=true"/>
         {/* <BotaoMusica texto="Resortear lacunas" callback={()=>{}} cor = "green" href ={objetoCorrige}/> */}
         {/* <BotaoMusica texto="Procurar nova música" callback={()=>console.log("oi")} cor = "blue" href={objetoCorrige}/> */}
 
