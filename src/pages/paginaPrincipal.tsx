@@ -54,6 +54,7 @@ export default function PaginaPrincipal(){
 
     const callbackCorrige = ()=>window.dispatchEvent(new CustomEvent("ativaCorrecao"))
     const callbackLimpa = ()=>window.dispatchEvent(new CustomEvent("limpaLacunas"))
+    const callbackResortea = ()=>window.location.reload()
 
 
     return (
@@ -64,7 +65,7 @@ export default function PaginaPrincipal(){
 
         <BotaoMusica texto="Corrigir" callback={callbackCorrige} cor = "bg-red-300"/>
         <BotaoMusica texto="Limpar " callback={callbackLimpa} cor = "bg-yellow-300" /> 
-        <BotaoMusica texto="Resortear " callback={()=>{}} cor = "bg-green-300" /> 
+        <BotaoMusica texto="Resortear " callback={callbackResortea} cor = "bg-green-300" /> 
         <BotaoMusica texto="Procurar música" callback={()=>console.log("oi")} cor = "bg-blue-300" />
 
         </footer>
