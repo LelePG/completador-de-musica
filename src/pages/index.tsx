@@ -1,13 +1,15 @@
-import { getLyrics, getSong } from 'genius-lyrics-api';
 import searchSong from 'genius-lyrics-api/lib/searchSong';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import Botao from '../components/Botao';
 import TextoInput from '../components/TextoInput';
 import Opcoes from '../model/Opcoes';
 
+interface paginaPrincipalProps{
+    opcoes:Opcoes
+}
 
-export default function PaginaInicial(){
-    const [opcoes,setOpcoes] = useState(new Opcoes())
+export default function PaginaInicial(props:paginaPrincipalProps){
+    const [opcoes,setOpcoes] = useState(props.opcoes)
     const [musicasEncontadas,setMusicasEncontadas] = useState([])
 
 

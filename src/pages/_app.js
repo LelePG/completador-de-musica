@@ -1,13 +1,11 @@
-import '../styles/globals.css'
-
-import Musica from "../components/Musica"
-import Lacuna from '../components/Lacuna'
 import PaginaPrincipal from "./PaginaPrincipal"
 import PaginaInicial from "."
+import Opcoes from '../model/Opcoes';
 
+const opcoesGerais = new Opcoes();
 
 function MyApp({ Component, pageProps }) {
-  return <PaginaInicial/>
+  return <PaginaInicial opcoes={opcoesGerais}/>
   // return <Lacuna palavra = "teste"/>
 }
 

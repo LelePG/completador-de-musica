@@ -13,7 +13,7 @@ export default class Opcoes {
 		return this._title;
 	}
 
-	private get apiKey(): string {
+	public get apiKey(): string {
 		return this._apiKey;
 	}
 
