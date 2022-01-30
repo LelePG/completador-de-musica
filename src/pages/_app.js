@@ -2,8 +2,8 @@ import '../styles/globals.css'
 
 import Musica from "../components/Musica"
 import Lacuna from '../components/Lacuna'
-import PaginaPrincipal from "./paginaPrincipal"
-import PaginaInicial from "./paginaInicial"
+import PaginaPrincipal from "./PaginaPrincipal"
+import PaginaInicial from "."
 
 
 function MyApp({ Component, pageProps }) {
