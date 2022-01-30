@@ -1,6 +1,7 @@
 
 interface musicaProps {
 	nomeMusica:string;
+	nomeArtista:string;
 	musica:string;
 	dificuldade: 10 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55 | 60;
 }
@@ -10,7 +11,7 @@ import MusicaModel from "../model/MusicaModel";
 
 
 export default function Musica(props: musicaProps) {
-	const musica = new MusicaModel(props.nomeMusica, props.musica, props.dificuldade);
+	const musica = new MusicaModel(props.nomeMusica, props.musica, props.nomeArtista, props.dificuldade);
 
 	const musicaRenderizavel: [JSX.Element] = musica.musicaFormatada.map(
 		(linha, indiceLinha) => {
@@ -39,6 +40,9 @@ export default function Musica(props: musicaProps) {
 			<h1 className="text-xl font-bold place-self-center mb-4">
 				{musica.nome}
 			</h1>
+			<h2 className="text-md font-bold place-self-center mb-4">
+				{musica.artista}
+			</h2>
 			{musicaRenderizavel}
 		</section>
 	);

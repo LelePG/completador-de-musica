@@ -1,13 +1,15 @@
 export default class MusicaModel{
     private _musicaTexto: string;
+    private _artista: string;
     private _dificuldade: number;
     private _nome : string;
     private _musicaFormatada: any;
     
     
-    constructor(nome: string, musicaTexto: string, dificuldade:number){
+    constructor(nome: string, musicaTexto: string, artista:string, dificuldade:number){
         this._nome = nome
         this._musicaTexto = musicaTexto
+        this._artista = artista
         this._dificuldade = dificuldade
         this._musicaFormatada = this.formatarMusica(musicaTexto)
     }
@@ -26,7 +28,8 @@ export default class MusicaModel{
 
     private validaPraTroca(palavra: string){
         const palavraInvalida = palavra.endsWith("?")|| palavra.endsWith("!")|| palavra.endsWith(",")||
-         palavra.endsWith(")")|| palavra.startsWith("(")|| palavra.endsWith(":")|| palavra.endsWith(";") || !palavra.trim()
+         palavra.endsWith(")")|| palavra.startsWith("(")|| palavra.endsWith(":")|| palavra.endsWith(";") || 
+         palavra.endsWith("[")|| palavra.startsWith("]")|| !palavra.trim()
         return !palavraInvalida
     }
 
@@ -53,8 +56,12 @@ export default class MusicaModel{
         return this._musicaFormatada;
     }
 
-    public get nome(): any {
+    public get nome(): string {
         return this._nome;
+    }
+
+    public get artista(): string {
+        return this._artista;
     }
 
 
