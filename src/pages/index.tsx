@@ -56,7 +56,7 @@ return(<div className='flex flex-col justify-center items-center text-lg mt-10'>
     <label >Dificuldade: </label>
     <input type="range" name="dificuldade" min="15" max="65" value={dificuldadeSlider} step="5" className="bg-red-300" onChange={(e)=> setDificuldadeSlider(parseInt(e.target.value))}></input>
     </div>
-    <Botao texto = "Pesquisar" callback = {procuraMusica} cor="bg-blue-500"/>
+    <Botao texto = "Pesquisar" callback = {procuraMusica} cor="bg-blue-500 my-3"/>
         {exibeResultado()}
     </div>
 )
