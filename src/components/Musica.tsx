@@ -3,7 +3,7 @@ interface musicaProps {
 	nomeMusica:string;
 	nomeArtista:string;
 	musica:string;
-	dificuldade: 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55 | 60;
+	dificuldade: number;
 }
 
 import Lacuna from "./Lacuna";
@@ -13,7 +13,7 @@ import MusicaModel from "../model/MusicaModel";
 export default function Musica(props: musicaProps) {
 	const musica = new MusicaModel(props.nomeMusica, props.musica, props.nomeArtista, props.dificuldade);
 
-	const musicaRenderizavel: [JSX.Element] = musica.musicaFormatada.map(
+	const musicaRenderizavel: [JSX.Element] = musica.musicaFormatada?.map(
 		(linha, indiceLinha) => {
 			let novaLinha = linha.map((palavra, indicePalavra) => {
 				return palavra.temLacuna ? (
@@ -28,7 +28,7 @@ export default function Musica(props: musicaProps) {
 				);
 			});
 			return (
-				<div key={indiceLinha} className="flex whitespace-pre h-10">
+				<div key={indiceLinha} className="flex flex-wrap whitespace-pre my-3">
 					{novaLinha}
 				</div>
 			);
@@ -36,7 +36,7 @@ export default function Musica(props: musicaProps) {
 	);
 
 	return (
-		<section className="flex flex-col flex-wrap border-black border-4 p-4 shadow-2xl rounded-md w-min">
+		<section className="flex flex-col flex-wrap border-black border-4 p-4 shadow-2xl rounded-md w-3/5 bg-neutral-100">
 			<h1 className="text-xl font-bold place-self-center mb-4">
 				{musica.nome}
 			</h1>
