@@ -3,7 +3,7 @@ interface musicaProps {
 	nomeMusica:string;
 	nomeArtista:string;
 	musica:string;
-	dificuldade: 10 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55 | 60;
+	dificuldade: 15 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55 | 60;
 }
 
 import Lacuna from "./Lacuna";

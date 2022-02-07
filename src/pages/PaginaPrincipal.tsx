@@ -25,7 +25,7 @@ export default function PaginaPrincipal(props:paginaPrincipalProps){
 
     return (
     <main className="flex justify-center m-5 pb-16" >
-        <Musica nomeMusica={titulo} nomeArtista={artista} musica = {letra} dificuldade={10}/>
+        <Musica nomeMusica={titulo} nomeArtista={artista} musica = {letra} dificuldade={15}/>
         <footer className="fixed bottom-3 w-3/4 lg:w-2/4 h-25 
                             flex justify-center">
 

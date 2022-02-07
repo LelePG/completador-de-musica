@@ -13,8 +13,9 @@ const opcoesGerais = new Opcoes();
 // }
 
 function MyApp({ Component, pageProps }) {
-  return <PaginaPrincipal caminho="Queen-killer-queen"/>
-  // return <PaginaInicial opcoes={opcoesGerais} />
+  // return <PaginaPrincipal caminho="Queen-killer-queen"/>
+  return     <PaginaInicial opcoes={opcoesGerais} />
+
 
   // return <Lacuna palavra = "teste"/>
 }
