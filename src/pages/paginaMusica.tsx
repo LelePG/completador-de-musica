@@ -17,7 +17,8 @@ export default function PaginaMusica(){
     const titulo = tituloEautoria.shift()?.trim().toUpperCase()
     const artista = tituloEautoria.pop()?.trim().toUpperCase()
 
- getLyrics(`https://genius.com/${caminho}`).then((texto)=>setLetra(texto))
+    // isso aqui tá causando multiplor renders
+    getLyrics(`https://genius.com/${caminho}`).then((texto)=>{setLetra(texto); console.log("setadno")})
 
     const callbackCorrige = ()=>window.dispatchEvent(new CustomEvent("ativaCorrecao"))
     const callbackLimpa = ()=>window.dispatchEvent(new CustomEvent("limpaLacunas"))
