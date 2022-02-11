@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Router, useRouter } from 'next/router';
 import { useState } from 'react';
 import Botao from '../components/Botao';
+import CardMusica from '../components/CardMusica';
 import TextoInput from '../components/TextoInput';
 import Opcoes from '../model/Opcoes';
 
@@ -27,23 +28,9 @@ export default function PaginaInicial(){
         }
 
         const musicasExibiveis = musicasEncontadas.map((musica)=>{
-            return (<li key = {musica.id} className='w-1/4  m-2 rounded-md border-2 border-black'>
-                    <a onClick = {((e)=>{
-                        e.preventDefault()
-                        router.push({
-                            pathname: '/paginaMusica',
-                         query: {
-                             titulo: musica.title,
-                             caminho:musica.url.split("/").pop(),
-                             dificuldade: dificuldadeSlider
-                         }
-                    })})} className="flex justify-evenly items-center h-full w-full bg-neutral-100  p-2 hover:bg-neutral-200">
-                <img src={musica.albumArt} className="w-20 rounded-sm"/>
-                <span className='ml-4'>{musica.title}</span>
-                    </a>
-                {/* </Link> */}
-            </li>)
+            return <CardMusica title= {musica.title} url = {musica.url} dificuldade = {dificuldadeSlider} id ={musica.id}   albumArt = {musica.albumArt}/>
         })
+
         return <ul className='flex flex-col justify-center items-center w-full'>{musicasExibiveis}</ul>
     }
 
@@ -56,7 +43,7 @@ return(<div className='flex flex-col justify-center items-center text-lg mt-10'>
     </div>
     <div className='flex align-center gap-3 my-3'>
     <label >Dificuldade: </label>
-    <input type="range" name="dificuldade" min="15" max="40" value={dificuldadeSlider} step="5" className="bg-red-300" onChange={(e)=> setDificuldadeSlider(parseInt(e.target.value))}></input>
+    <input type="range" name="dificuldade" min="10" max="40" value={dificuldadeSlider} step="5" className="bg-red-300" onChange={(e)=> setDificuldadeSlider(parseInt(e.target.value))}></input>
     </div>
     <Botao texto = "Pesquisar" callback = {procuraMusica} cor="bg-blue-500 my-3"/>
         {exibeResultado()}

@@ -35,6 +35,7 @@ export default function PaginaMusica(props){
 
     const callbackCorrige = ()=>window.dispatchEvent(new CustomEvent("ativaCorrecao"))
     const callbackLimpa = ()=>window.dispatchEvent(new CustomEvent("limpaLacunas"))
+    const callbackMostra = ()=>window.dispatchEvent(new CustomEvent("abreLacunas"))
     const callbackResortea = ()=>window.location.reload()
 
     return (
@@ -44,8 +45,9 @@ export default function PaginaMusica(props){
                             flex justify-center">
 
         <BotaoMusica texto="Corrigir" callback={callbackCorrige} cor = "bg-red-300"/>
-        <BotaoMusica texto="Limpar " callback={callbackLimpa} cor = "bg-yellow-300" /> 
-        <BotaoMusica texto="Resortear " callback={callbackResortea} cor = "bg-green-300" /> 
+        <BotaoMusica texto="Limpar" callback={callbackLimpa} cor = "bg-yellow-300" /> 
+        <BotaoMusica texto="Mostrar" callback={callbackMostra} cor = "bg-green-300" />
+        <BotaoMusica texto="Resortear " callback={callbackResortea} cor = "bg-pink-300" /> 
         <BotaoMusica texto="Voltar" callback={()=>router.push("/")} cor = "bg-blue-300" />
 
         </footer>

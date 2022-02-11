@@ -10,6 +10,7 @@ import { Check, Lampada } from "./Icones";
 export default function Lacuna(props: lacunaProps) {
 	const [lacunaAtual, setLacunaAtual] = useState(new LacunaModel(props.palavra));
 	const alteraVisibilidade = () => setLacunaAtual(lacunaAtual.alteraVisibilidadeLacuna())
+	const abreLacuna = ()=> setLacunaAtual(lacunaAtual.abreLacuna())
 	const corrigePalavra = () => setLacunaAtual(lacunaAtual.corrijeLacuna("bg-green-300", "bg-red-300"));
 	const alteraTexto = (texto:string)=> setLacunaAtual(lacunaAtual.escreveLacuna(texto))	
 	const limpaLacuna = ()=> setLacunaAtual(lacunaAtual.limpaLacuna())	
@@ -21,6 +22,10 @@ export default function Lacuna(props: lacunaProps) {
 		
 		})
 		window.addEventListener("limpaLacunas", ()=> {isMounted ? limpaLacuna():null
+			isMounted = false
+		})
+
+		window.addEventListener("abreLacunas", ()=> {isMounted ? abreLacuna():null
 			isMounted = false
 		})
 

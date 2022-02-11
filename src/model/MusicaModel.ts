@@ -17,7 +17,7 @@ export default class MusicaModel{
     private formatarMusica(musica:string):any{
         const linhaTemColchetes = (linha) => (linha.startsWith("[") || linha.endsWith("]"))
         const linhaTemChaves = (linha) => (linha.startsWith("{") || linha.endsWith("}"))
-        const linhaValida = (linha) => linhaTemColchetes(linha) || linhaTemChaves(linha) ? false :true
+        const linhaValida = (linha) => linhaTemColchetes(linha) || linhaTemChaves(linha) || linha.length <= 2 ? false :true
 
 
         const musicaQuebrada = musica?.split("\n").filter((linha)=> linhaValida(linha)  ).map((linha) => linha.split(" "))
