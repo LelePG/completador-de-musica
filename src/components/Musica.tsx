@@ -8,32 +8,36 @@ interface musicaProps {
 
 import Lacuna from "./Lacuna";
 import MusicaModel from "../model/MusicaModel";
+import { useEffect } from "react";
 
 
 export default function Musica(props: musicaProps) {
 	const musica = new MusicaModel(props.nomeMusica, props.musica, props.nomeArtista, props.dificuldade);
 
-	const musicaRenderizavel: [JSX.Element] = musica.musicaFormatada?.map(
-		(linha, indiceLinha) => {
-			let novaLinha = linha.map((palavra, indicePalavra) => {
-				return palavra.temLacuna ? (
-					<Lacuna
-						palavra={palavra.texto}
-						key={palavra + indiceLinha + indicePalavra}
-					/>
-				) : (
-					<span key={palavra + indiceLinha + indicePalavra}>
-						{palavra.texto + " "}
-					</span>
+	let musicaRenderizavel= musica.musicaFormatada?.map(
+			(linha, indiceLinha) => {
+				let novaLinha = linha.map((palavra, indicePalavra) => {
+					return palavra.temLacuna ? (
+						<Lacuna
+							palavra={palavra.texto}
+							key={palavra + indiceLinha + indicePalavra}
+						/>
+					) : (
+						<span key={palavra + indiceLinha + indicePalavra}>
+							{palavra.texto + " "}
+						</span>
+					);
+				});
+				return (
+					<div key={indiceLinha} className="flex flex-wrap whitespace-pre my-3">
+						{novaLinha}
+					</div>
 				);
-			});
-			return (
-				<div key={indiceLinha} className="flex flex-wrap whitespace-pre my-3">
-					{novaLinha}
-				</div>
-			);
-		}
-	);
+			}
+		);
+
+	
+	
 
 	return (
 		<section className="flex flex-col flex-wrap border-black border-4 p-4 shadow-2xl rounded-md w-3/5 bg-neutral-100">

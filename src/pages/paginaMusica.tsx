@@ -6,7 +6,9 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 
 
-export async function getServerSideProps(context) {
+import { GetServerSideProps } from 'next'
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
         props: {
             titulo: context.query.titulo,
@@ -15,8 +17,7 @@ export async function getServerSideProps(context) {
         }, 
         
     }
-  }
-
+}
 
 export default function PaginaMusica(props){
     const router = useRouter()
@@ -32,7 +33,7 @@ export default function PaginaMusica(props){
     return (
     <main className="flex justify-center m-5 pb-16" >
         <Musica nomeMusica={titulo} nomeArtista={artista} musica = {props.letra} dificuldade= {parseInt(String(props.dificuldade))}/>
-        <footer className="fixed bottom-3 w-3/4 lg:w-2/4 h-25 
+        <footer className="fixed bottom-3 w-min h-25 
                             flex justify-center">
 
         <BotaoMusica texto="Corrigir" callback={callbackCorrige} cor = "bg-red-300"/>

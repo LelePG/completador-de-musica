@@ -9,16 +9,23 @@ import { Check, Lampada } from "./Icones";
 
 export default function Lacuna(props: lacunaProps) {
 	const [lacunaAtual, setLacunaAtual] = useState(new LacunaModel(props.palavra));
-
-	useEffect(() =>{
-		window.addEventListener("ativaCorrecao", () => {corrigePalavra()})
-		window.addEventListener("limpaLacunas", ()=> limpaLacuna())
-	}, [lacunaAtual,setLacunaAtual])
-	
 	const alteraVisibilidade = () => setLacunaAtual(lacunaAtual.alteraVisibilidadeLacuna())
 	const corrigePalavra = () => setLacunaAtual(lacunaAtual.corrijeLacuna("bg-green-300", "bg-red-300"));
 	const alteraTexto = (texto:string)=> setLacunaAtual(lacunaAtual.escreveLacuna(texto))	
 	const limpaLacuna = ()=> setLacunaAtual(lacunaAtual.limpaLacuna())	
+
+	useEffect(() =>{
+		let isMounted = true
+		window.addEventListener("ativaCorrecao", () => {isMounted ? corrigePalavra() : null
+			isMounted = false
+		
+		})
+		window.addEventListener("limpaLacunas", ()=> {isMounted ? limpaLacuna():null
+			isMounted = false
+		})
+
+	}, [lacunaAtual,setLacunaAtual, corrigePalavra, limpaLacuna])
+	
 
 
 	const parteVisivel = () => {
