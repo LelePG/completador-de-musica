@@ -15,7 +15,12 @@ export default class MusicaModel{
     }
     
     private formatarMusica(musica:string):any{
-        const musicaQuebrada = musica?.split("\n").filter((linha)=> !(linha.startsWith("[") || linha.endsWith("]"))).map((linha) => linha.split(" "))
+        const linhaTemColchetes = (linha) => (linha.startsWith("[") || linha.endsWith("]"))
+        const linhaTemChaves = (linha) => (linha.startsWith("{") || linha.endsWith("}"))
+        const linhaValida = (linha) => linhaTemColchetes(linha) || linhaTemChaves(linha) ? false :true
+
+
+        const musicaQuebrada = musica?.split("\n").filter((linha)=> linhaValida(linha)  ).map((linha) => linha.split(" "))
         const musicaEmObjeto = musicaQuebrada?.map(linha =>{
             const linhaEmObjeto = linha.map(palavra => {
                 let lacuna = this.chanceDeModificacao() <= (this.dificuldade) && this.validaPraTroca(palavra) ? true :false
@@ -29,7 +34,7 @@ export default class MusicaModel{
     private validaPraTroca(palavra: string){
         const palavraInvalida = palavra.endsWith("?")|| palavra.endsWith("!")|| palavra.endsWith(",")||
          palavra.endsWith(")")|| palavra.startsWith("(")|| palavra.endsWith(":")|| palavra.endsWith(";") || 
-         palavra.endsWith("]")|| palavra.startsWith("[")|| palavra.startsWith("¡") || !palavra.trim()
+         palavra.endsWith("]")|| palavra.startsWith("[")|| palavra.startsWith("¡") || palavra.startsWith("\"") || palavra.endsWith("\"") || palavra.startsWith("\'") || palavra.endsWith("\'") || !palavra.trim()
         return !palavraInvalida
     }
 

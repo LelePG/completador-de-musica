@@ -9,11 +9,17 @@ import { useRouter } from "next/router"
 import { GetServerSideProps } from 'next'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+
+    if(!context.res) {
+        context.res.setHeader('Location', '/somewhere-else')
+        // Next.js would auto-detect the response being finished and stops it's own process
+       context.res.end()
+    }
     return {
         props: {
-            titulo: context.query.titulo,
-            dificuldade: context.query.dificuldade,
-            letra: await getLyrics(`https://genius.com/${context.query.caminho}`)
+            titulo: context.query?.titulo,
+            dificuldade: context.query?.dificuldade,
+            letra: await getLyrics(`https://genius.com/${context.query?.caminho}`)
         }, 
         
     }
@@ -21,6 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 export default function PaginaMusica(props){
     const router = useRouter()
+
     const tituloEautoria = String(props.titulo).split("by")
     const titulo = tituloEautoria.shift()?.trim().toUpperCase()
     const artista = tituloEautoria.pop()?.trim().toUpperCase()

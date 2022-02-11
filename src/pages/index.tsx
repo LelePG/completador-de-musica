@@ -37,7 +37,7 @@ export default function PaginaInicial(){
                              caminho:musica.url.split("/").pop(),
                              dificuldade: dificuldadeSlider
                          }
-                    }, "/paginaMusica")})} className="flex justify-evenly items-center h-full w-full bg-neutral-100  p-2 hover:bg-neutral-200">
+                    })})} className="flex justify-evenly items-center h-full w-full bg-neutral-100  p-2 hover:bg-neutral-200">
                 <img src={musica.albumArt} className="w-20 rounded-sm"/>
                 <span className='ml-4'>{musica.title}</span>
                     </a>
