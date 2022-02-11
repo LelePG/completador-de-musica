@@ -1,5 +1,6 @@
 import searchSong from 'genius-lyrics-api/lib/searchSong';
 import Link from 'next/link';
+import { Router, useRouter } from 'next/router';
 import { useState } from 'react';
 import Botao from '../components/Botao';
 import TextoInput from '../components/TextoInput';
@@ -11,6 +12,7 @@ export default function PaginaInicial(){
     const [dificuldadeSlider, setDificuldadeSlider] = useState(20)
     const [musicasEncontadas,setMusicasEncontadas] = useState([])
 
+    const router = useRouter()
 
     const updateTitle = (text: string) => setOpcoes(opcoes.changeTitle(text))
     const updateArtist = (text: string) => setOpcoes(opcoes.changeArtist(text))
@@ -25,21 +27,21 @@ export default function PaginaInicial(){
         }
 
         const musicasExibiveis = musicasEncontadas.map((musica)=>{
-            return (<li key = {musica.id} className='bg-neutral-100 w-1/4 p-2 m-2 rounded-md border-2 border-black'>
-                <Link href=
-                {{
-                    pathname: '/paginaMusica',
-                    query: {
-                        titulo: musica.title,
-                        caminho:musica.url.split("/").pop(),
-                        dificuldade: dificuldadeSlider
-                    },
-                  }}>
-                    <a className="flex justify-evenly items-center">
+            return (<li key = {musica.id} className='w-1/4  m-2 rounded-md border-2 border-black'>
+                    <a onClick = {((e)=>{
+                        e.preventDefault()
+                        router.push({
+                            pathname: '/paginaMusica',
+                         query: {
+                             titulo: musica.title,
+                             caminho:musica.url.split("/").pop(),
+                             dificuldade: dificuldadeSlider
+                         }
+                    }, "/paginaMusica")})} className="flex justify-evenly items-center h-full w-full bg-neutral-100  p-2 hover:bg-neutral-200">
                 <img src={musica.albumArt} className="w-20 rounded-sm"/>
                 <span className='ml-4'>{musica.title}</span>
                     </a>
-                </Link>
+                {/* </Link> */}
             </li>)
         })
         return <ul className='flex flex-col justify-center items-center w-full'>{musicasExibiveis}</ul>
@@ -54,7 +56,7 @@ return(<div className='flex flex-col justify-center items-center text-lg mt-10'>
     </div>
     <div className='flex align-center gap-3 my-3'>
     <label >Dificuldade: </label>
-    <input type="range" name="dificuldade" min="15" max="65" value={dificuldadeSlider} step="5" className="bg-red-300" onChange={(e)=> setDificuldadeSlider(parseInt(e.target.value))}></input>
+    <input type="range" name="dificuldade" min="15" max="40" value={dificuldadeSlider} step="5" className="bg-red-300" onChange={(e)=> setDificuldadeSlider(parseInt(e.target.value))}></input>
     </div>
     <Botao texto = "Pesquisar" callback = {procuraMusica} cor="bg-blue-500 my-3"/>
         {exibeResultado()}

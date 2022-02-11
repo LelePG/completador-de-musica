@@ -15,7 +15,7 @@ export default class MusicaModel{
     }
     
     private formatarMusica(musica:string):any{
-        const musicaQuebrada = musica?.split("\n").map((linha) => linha.split(" "))
+        const musicaQuebrada = musica?.split("\n").filter((linha)=> !(linha.startsWith("[") || linha.endsWith("]"))).map((linha) => linha.split(" "))
         const musicaEmObjeto = musicaQuebrada?.map(linha =>{
             const linhaEmObjeto = linha.map(palavra => {
                 let lacuna = this.chanceDeModificacao() <= (this.dificuldade) && this.validaPraTroca(palavra) ? true :false

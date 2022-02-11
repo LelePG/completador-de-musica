@@ -31,7 +31,7 @@ export default function Lacuna(props: lacunaProps) {
 	const parteVisivel = () => {
 		const inputConfig = (
 			<input
-				className={`w-full rounded-md border border-black text-center ${lacunaAtual.fundoInput}`}
+				className={`w-4/5 rounded-md border mr-1 text-center border-black`}
 				value={lacunaAtual.textoUsuario}
 				onChange={(e) =>
 					alteraTexto(e.target.value)
@@ -39,14 +39,14 @@ export default function Lacuna(props: lacunaProps) {
 				type="text"
 			/>
 		);
-        const textoConfig = (<p className="w-full text-center align-bottom font-bold">
+        const textoConfig = (<p className={`w-4/5 rounded-md text-center font-bold `}>
             {lacunaAtual.palavra} 
             </p>)
 		return lacunaAtual.aberto ? textoConfig : inputConfig;
 	};
 
 	return (
-		<div className="flex w-32 h-8 p-0.5 border rounded-md border-black mr-1">
+		<div className={`flex w-32 h-8 p-1 border justify-center rounded-md border-black mr-1 ${lacunaAtual.fundoInput}`}>
 			{parteVisivel()}
 			<aside className="w-3">
 				{Check(corrigePalavra,3)}
