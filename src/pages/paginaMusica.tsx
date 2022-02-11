@@ -5,20 +5,25 @@ import getLyrics from 'genius-lyrics-api/lib/getLyrics';
 import Link from "next/link"
 import { useRouter } from "next/router"
 
-export default function PaginaMusica(){
 
+export async function getServerSideProps(context) {
+    return {
+        props: {
+            titulo: context.query.titulo,
+            dificuldade: context.query.dificuldade,
+            letra: await getLyrics(`https://genius.com/${context.query.caminho}`)
+        }, 
+        
+    }
+  }
+
+
+export default function PaginaMusica(props){
     const router = useRouter()
-    const [letra,setLetra] = useState("")
-
-    const caminho = router.query.caminho
-    const dificuldade = router.query.dificuldade
-    const tituloEautoria = String(router.query.titulo).split("by")
-    
+    const tituloEautoria = String(props.titulo).split("by")
     const titulo = tituloEautoria.shift()?.trim().toUpperCase()
     const artista = tituloEautoria.pop()?.trim().toUpperCase()
 
-    // isso aqui tá causando multiplor renders
-    getLyrics(`https://genius.com/${caminho}`).then((texto)=>{setLetra(texto); console.log("setadno")})
 
     const callbackCorrige = ()=>window.dispatchEvent(new CustomEvent("ativaCorrecao"))
     const callbackLimpa = ()=>window.dispatchEvent(new CustomEvent("limpaLacunas"))
@@ -26,7 +31,7 @@ export default function PaginaMusica(){
 
     return (
     <main className="flex justify-center m-5 pb-16" >
-        <Musica nomeMusica={titulo} nomeArtista={artista} musica = {letra} dificuldade= {parseInt(String(dificuldade))}/>
+        <Musica nomeMusica={titulo} nomeArtista={artista} musica = {props.letra} dificuldade= {parseInt(String(props.dificuldade))}/>
         <footer className="fixed bottom-3 w-3/4 lg:w-2/4 h-25 
                             flex justify-center">
 
