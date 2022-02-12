@@ -11,6 +11,7 @@ export default function Gap(props: gapProps) {
 
 	const changeGapVisibility = () => setcurrentGap(currentGap.changeGapVisibility());
 	const openGap = () => setcurrentGap(currentGap.openGap());
+	const closeGap = () => setcurrentGap(currentGap.closeGap());
 	const correctGap = () => setcurrentGap(currentGap.correctGap("bg-green-300", "bg-red-300"));
 	const write = (texto: string) => setcurrentGap(currentGap.write(texto));
 	const cleanGap = () => setcurrentGap(currentGap.cleanGap());
@@ -19,6 +20,7 @@ export default function Gap(props: gapProps) {
 		window.addEventListener("correct", () => correctGap());
 		window.addEventListener("clean", () => cleanGap());
 		window.addEventListener("open", () => openGap());
+		window.addEventListener("close", () => closeGap());
 	}, [currentGap, setcurrentGap, correctGap, cleanGap]);
 
 	const inputView = (

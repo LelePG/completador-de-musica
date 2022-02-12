@@ -12,11 +12,11 @@ export default function CardMusica(props :CardMusicaProps) {
 const router = useRouter()
 
     const objetoRota = {
-        pathname: '/paginaMusica',
+        pathname: '/songPage',
      query: {
-         titulo: props.title,
-         caminho:props.url.split("/").pop(),
-         dificuldade: props.dificuldade
+         title: props.title,
+         path:props.url.split("/").pop(),
+         dificulty: props.dificuldade
      }
 }
 

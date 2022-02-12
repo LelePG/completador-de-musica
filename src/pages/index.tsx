@@ -2,7 +2,7 @@ import searchSong from 'genius-lyrics-api/lib/searchSong';
 import Link from 'next/link';
 import { Router, useRouter } from 'next/router';
 import { useState } from 'react';
-import Botao from '../components/Botao';
+import Botao from '../components/Button';
 import CardMusica from '../components/CardMusica';
 import TextoInput from '../components/TextoInput';
 import Opcoes from '../model/Options';
@@ -45,7 +45,7 @@ return(<div className='flex flex-col justify-center items-center text-lg mt-10'>
     <label >Dificuldade: </label>
     <input type="range" name="dificuldade" min="10" max="40" value={dificuldadeSlider} step="5" className="bg-red-300" onChange={(e)=> setDificuldadeSlider(parseInt(e.target.value))}></input>
     </div>
-    <Botao texto = "Pesquisar" callback = {procuraMusica} cor="bg-blue-500 my-3"/>
+    <Botao text = "Pesquisar" callback = {procuraMusica} color="bg-blue-500 my-3"/>
         {exibeResultado()}
     </div>
 )
