@@ -33,9 +33,9 @@ export default function PaginaMusica(props){
     const artista = tituloEautoria.pop()?.trim().toUpperCase()
 
 
-    const callbackCorrige = ()=>window.dispatchEvent(new CustomEvent("ativaCorrecao"))
-    const callbackLimpa = ()=>window.dispatchEvent(new CustomEvent("limpaLacunas"))
-    const callbackMostra = ()=>window.dispatchEvent(new CustomEvent("abreLacunas"))
+    const callbackCorrige = ()=>window.dispatchEvent(new CustomEvent("correct"))
+    const callbackLimpa = ()=>window.dispatchEvent(new CustomEvent("clean"))
+    const callbackMostra = ()=>window.dispatchEvent(new CustomEvent("open"))
     const callbackResortea = ()=>window.location.reload()
 
     return (

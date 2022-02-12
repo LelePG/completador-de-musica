@@ -6,7 +6,7 @@ interface musicaProps {
 	dificuldade: number;
 }
 
-import Lacuna from "./Lacuna";
+import Lacuna from "./Gap";
 import MusicaModel from "../model/MusicaModel";
 import { useEffect } from "react";
 
@@ -19,7 +19,7 @@ export default function Musica(props: musicaProps) {
 				let novaLinha = linha.map((palavra, indicePalavra) => {
 					return palavra.temLacuna ? (
 						<Lacuna
-							palavra={palavra.texto}
+							gapWord={palavra.texto}
 							key={palavra + indiceLinha + indicePalavra}
 						/>
 					) : (
