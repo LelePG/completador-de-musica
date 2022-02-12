@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Botao from '../components/Botao';
 import CardMusica from '../components/CardMusica';
 import TextoInput from '../components/TextoInput';
-import Opcoes from '../model/Opcoes';
+import Opcoes from '../model/Options';
 
 
 export default function PaginaInicial(){
@@ -17,7 +17,7 @@ export default function PaginaInicial(){
 
     const updateTitle = (text: string) => setOpcoes(opcoes.changeTitle(text))
     const updateArtist = (text: string) => setOpcoes(opcoes.changeArtist(text))
-    const procuraMusica = () => searchSong(opcoes.formatado()).then((musicas)=>setMusicasEncontadas(musicas)).catch((e)=> setMusicasEncontadas([<p>Os seguintes problemas foram encontrados:</p>, <p>{String(e).includes("title")? "O título da música não foi informado": "O artista não foi informado"}</p>]))
+    const procuraMusica = () => searchSong(opcoes.formatted()).then((musicas)=>setMusicasEncontadas(musicas)).catch((e)=> setMusicasEncontadas([<p>Os seguintes problemas foram encontrados:</p>, <p>{String(e).includes("title")? "O título da música não foi informado": "O artista não foi informado"}</p>]))
 
     function exibeResultado(){
         if(musicasEncontadas[0]?.type === "p"){

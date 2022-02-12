@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BotaoMusica from "../components/Botao";
-import Musica from "../components/Musica";
+import Musica from "../components/Song";
 import getLyrics from 'genius-lyrics-api/lib/getLyrics';
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -40,7 +40,7 @@ export default function PaginaMusica(props){
 
     return (
     <main className="flex justify-center m-5 pb-16" >
-        <Musica nomeMusica={titulo} nomeArtista={artista} musica = {props.letra} dificuldade= {parseInt(String(props.dificuldade))}/>
+        <Musica songTitle={titulo} songArtist={artista} songLyrics = {props.letra} dificulty= {parseInt(String(props.dificuldade))}/>
         <footer className="fixed bottom-3 w-min h-25 
                             flex justify-center">
 

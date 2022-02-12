@@ -1,4 +1,4 @@
-export default class Opcoes {
+export default class Options {
 	private _apiKey: string = process.env.NEXT_PUBLIC_API_KEY;
 	private _title: string;
 	private _artist: string;
@@ -25,7 +25,7 @@ export default class Opcoes {
 		return this._optimizeQuery;
 	}
 
-	public formatado(): object {
+	public formatted(): object {
 		return {
 			apiKey: this.apiKey,
 			title: this.title,
@@ -34,11 +34,11 @@ export default class Opcoes {
 		};
 	}
 
-	public changeTitle(value: string): Opcoes {
-		return new Opcoes(value, this.artist);
+	public changeTitle(value: string): Options {
+		return new Options(value, this.artist);
 	}
 
-    public changeArtist(value: string): Opcoes {
-		return new Opcoes( this.title, value);
+	public changeArtist(value: string): Options {
+		return new Options(this.title, value);
 	}
 }

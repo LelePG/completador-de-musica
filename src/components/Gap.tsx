@@ -4,7 +4,7 @@ interface gapProps {
 
 import { useEffect, useState } from "react";
 import WordGapModel from "../model/WordGapModel";
-import { Check, Bulb } from "./Icones";
+import { Check, Bulb } from "./Icons";
 
 export default function Gap(props: gapProps) {
 	const [currentGap, setcurrentGap] = useState(new WordGapModel(props.gapWord));
