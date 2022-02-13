@@ -8,7 +8,7 @@ import language from "../lang/ptbr";
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	return {
 		props: {
-			title: context.query?.title,
+			songTitle: context.query?.title,
 			dificulty: context.query?.dificulty,
 			lyrics: await getLyrics(`https://genius.com/${context.query?.path}`),
 		},
