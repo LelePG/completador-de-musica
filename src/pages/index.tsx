@@ -16,11 +16,11 @@ export default function InitialPage() {
 	const serach = () =>
 		searchSong(options.formatted())
 			.then((musicas) => setFoundSongs(musicas))
-			.catch((e) => setFoundSongs([<p>{language.textProblemsFound}</p>, <p>{String(e).includes("title") ? language.textNoTitle : language.textNoAuthor}</p>]));
+			.catch((e) => setFoundSongs([<p key="0">{language.textProblemsFound}</p>, <p key="1">{String(e).includes("title") ? language.textNoTitle : language.textNoAuthor}</p>]));
 
 	function showResults() {
 		const serachResults = foundSongs.map((song) => {
-			return <SongCard song={song} dificulty={dificultySlider} />;
+			return <SongCard song={song} dificulty={dificultySlider} key = {song.id}/>;
 		});
 		return <ul className="flex flex-col justify-center items-center w-full">{serachResults}</ul>;
 	}
