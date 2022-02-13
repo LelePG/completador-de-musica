@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	};
 };
 
-export default function songPage(props) {
+export default function SongPage(props) {
 	const router = useRouter();
 
 	const songTitleAndAuthor = String(props.songTitle).split("by");

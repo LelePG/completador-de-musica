@@ -6,7 +6,7 @@ import SearchInput from "../components/SearchInput";
 import Options from "../model/Options";
 import language from "../lang/ptbr";
 
-export default function initialPage() {
+export default function InitialPage() {
 	const [options, setOptions] = useState(new Options());
 	const [dificultySlider, setDificultySlider] = useState(10);
 	const [foundSongs, setFoundSongs] = useState([]);
