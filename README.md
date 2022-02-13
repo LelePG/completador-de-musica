@@ -1,5 +1,5 @@
 ## 🎶 Completador de Música
-![Gif mostrando o funcionamento da aplicação]("./images/main.gif")
+![Gif mostrando o funcionamento da aplicação](images/main.gif)
 
 ## 💭 O que é este projeto?
 Este projeto é uma aplicação web desenvolvida com os frameworks Next.js e Tailwind que tem como objetivo ajudar no estudo de línguas estrangeiras através de músicas. Uma vez na página inicial da aplicação você deve informar o nome de uma música e do seu autor, o que mostrará uma lista de músicas encontradas, então basta selecionar a música que você deseja, colocá-la para tocar em alguma plataforma como youtube ou spotify e preencher as lacunas presentes na letra com a palavra correta. As lacunas são sorteadas de maneira aleatória, o que permite que você sempre tenha palavras diferentes para completar e assim melhorar suas habilidades na língua que está tentando aprender.
@@ -14,7 +14,7 @@ Depois disso, na página principal do projeto será preciso rodar os comandos `n
 ## 🤔 Como utilizar este projeto?
 Na página inicial da aplicação você deve colocar o nome da música e da pessoa ou banda a qual esta música está associada. Nesta tela inicial você também pode selecionar a dificuldade da música. quanto maior a dificuldade, mais lacunas irão aparecer para que você complete. Uma vez que o nome e a autoria da música tenham sido selecionados, você deve clicar no botão de pesquisa. Isso fará com que uma lista com os resultados para a sua busca seja renderizada, e então basta clicar sobre o card que contém a música desejada, e aqui vale notar que como as músicas são obtidas através da API, músicas em vários idiomas estão disponíveis. Uma vez que você tenha clicado no card da música, a aplicação fará a navegação para a página de letra da música, que tem a interface abaixo:
 
-![Interface visual]("./imagens/interface.png")
+![Interface visual](images/interface.png)
 
 Cada lacuna possui dois botões. O primeiro deles é o botão de correção indicado por um check que irá corrigir a lacuna atual deixando a borda verde se a palavra foi digitada corretamente e vermelha caso contrário. O segundo botão é o botão de dica representado por uma lâmpada. Este botão irá mostrar a palavra que deveria ser digitada naquela lacuna. Essas ações são individuais e aplicáveis apenas à lacuna atual.
 
