@@ -21,7 +21,7 @@ export default function Gap(props: gapProps) {
 		window.addEventListener("clean", () => cleanGap());
 		window.addEventListener("open", () => openGap());
 		window.addEventListener("close", () => closeGap());
-	}, [currentGap, setcurrentGap, correctGap, cleanGap, openGap, closeGap]);
+	});
 
 	const inputView = (
 		<input className={`w-4/5 rounded-md border mr-1 text-center border-black`} value={currentGap.userInput} onChange={(e) => write(e.target.value)} type="text" />

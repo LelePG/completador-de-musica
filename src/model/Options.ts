@@ -1,5 +1,5 @@
 export default class Options {
-	private _apiKey: string = process.env.NEXT_PUBLIC_API_KEY;
+	private _apiKey: string = process.env.NEXT_PUBLIC_CLIENT_ACCESS_TOKEN;
 	private _title: string;
 	private _artist: string;
 	private _optimizeQuery: boolean = true;
