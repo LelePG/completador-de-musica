@@ -15,12 +15,19 @@ export default function InitialPage() {
 	const updateArtist = (text: string) => setOptions(options.changeArtist(text));
 	const serach = () =>
 		searchSong(options.formatted())
-			.then((musicas) => setFoundSongs(musicas))
-			.catch((e) => setFoundSongs([<p key="0">{language.textProblemsFound}</p>, <p key="1">{String(e).includes("title") ? language.textNoTitle : language.textNoAuthor}</p>]));
+			.then((songs) => setFoundSongs(songs))
+			.catch((e) => {
+				const errorResponse = String(e).includes("title") ? language.textNoTitle : language.textNoAuthor;
+				setFoundSongs([<p key="0">{language.textProblemsFound}</p>, <p key="1">{errorResponse}</p>]);
+			});
 
 	function showResults() {
 		const serachResults = foundSongs.map((song) => {
-			return <SongCard song={song} dificulty={dificultySlider} key = {song.id}/>;
+			if (song.type === "p") {
+				return song;
+			} else {
+				return <SongCard song={song} dificulty={dificultySlider} key={song.id} />;
+			}
 		});
 		return <ul className="flex flex-col justify-center items-center w-full">{serachResults}</ul>;
 	}
@@ -34,9 +41,16 @@ export default function InitialPage() {
 			</div>
 			<div className="flex align-center gap-3 my-3">
 				<label>{language.textDificulty} </label>
-				<input type="range" name="dificulty" min="10" max="40"
-					value={dificultySlider} step="5" className="bg-red-300"
-					onChange={(e) => setDificultySlider(parseInt(e.target.value))}/>
+				<input
+					type="range"
+					name="dificulty"
+					min="10"
+					max="40"
+					value={dificultySlider}
+					step="5"
+					className="bg-red-300"
+					onChange={(e) => setDificultySlider(parseInt(e.target.value))}
+				/>
 			</div>
 			<Button text="Pesquisar" callback={serach} color="bg-blue-500 my-3" />
 			{showResults()}
