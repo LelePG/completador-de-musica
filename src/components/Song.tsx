@@ -26,22 +26,7 @@ export default function Song(props: songProps) {
 			</div>
 		);
 	});
-
-	let songLyricsRenderizavel = songLyrics.formattedSong?.map((linha, indiceLinha) => {
-		let novaLinha = linha.map((palavra, indicePalavra) => {
-			return palavra.gap ? (
-				<Gap gapWord={palavra.text} key={palavra + indiceLinha + indicePalavra} />
-			) : (
-				<span key={palavra + indiceLinha + indicePalavra}>{palavra.text + " "}</span>
-			);
-		});
-		return (
-			<div key={indiceLinha} className="flex flex-wrap whitespace-pre my-3">
-				{novaLinha}
-			</div>
-		);
-	});
-
+		
 	return (
 		<section className="flex flex-col flex-wrap border-black border-4 p-4 shadow-2xl rounded-md w-3/5 bg-neutral-100">
 			<h1 className="text-xl font-bold place-self-center mb-4">{songLyrics.songTitle}</h1>

@@ -12,12 +12,15 @@ export default class langModel {
 	private _textSongTitle: string;
 	private _textSongAuthor: string;
 	private _textDificulty: string;
+	private _textDoneBy: string;
 
-	public setMainPageText(textMainTitle: string, textSongTitle: string, textSongAuthor: string, textDificulty: string){
+	public setMainPageText(textMainTitle: string, textSongTitle: string, textSongAuthor: string, textDificulty: string, textDoneBy:string){
 		this._textMainTitle = textMainTitle;
 		this._textSongTitle = textSongTitle;
 		this._textSongAuthor = textSongAuthor;
 		this._textDificulty = textDificulty;
+		this._textDoneBy = textDoneBy;
+
 	}
 
 	public setSongPageButtons(textCorrect: string, textCleanAll: string, textShowAll: string, textHideAll: string, textReload: string, textGoBack: string) {
@@ -74,5 +77,8 @@ export default class langModel {
 	}
 	public get textDificulty(): string {
 		return this._textDificulty;
+	}
+	public get textDoneBy(): string {
+		return this._textDoneBy;
 	}
 }

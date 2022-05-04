@@ -5,6 +5,7 @@ import SongCard from "../components/SongCard";
 import SearchInput from "../components/SearchInput";
 import Options from "../model/Options";
 import language from "../lang/ptbr";
+import Footer from "../components/Footer";
 
 export default function InitialPage() {
 	const [options, setOptions] = useState(new Options());
@@ -54,6 +55,7 @@ export default function InitialPage() {
 			</div>
 			<Button text="Pesquisar" callback={serach} color="bg-blue-500 my-3" />
 			{showResults()}
+			<Footer text={language.textDoneBy}/>
 		</div>
 	);
 }
