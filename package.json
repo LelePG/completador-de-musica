@@ -9,18 +9,21 @@
   },
   "dependencies": {
     "genius-lyrics-api": "^3.2.0",
-    "next": "12.0.8",
+    "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@types/node": "^17.0.31",
     "@types/react": "^17.0.38",
     "autoprefixer": "^10.4.2",
     "eslint": "8.6.0",
     "eslint-config-next": "12.0.8",
+    "minimist": ">=1.2.6",
+    "node-fetch": ">=2.6.7",
+    "nth-check": ">=2.0.1",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.15",
-    "typescript": "^4.6.2",
-    "minimist": ">=1.2.6"
+    "typescript": "^4.6.2"
   }
 }
