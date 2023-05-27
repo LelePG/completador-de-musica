@@ -25,41 +25,57 @@ export default class songLyricsModel {
 		const lineIsValid = (line) => (this.textHasBrackets(line) || this.textHasCurlyBraces(line) || line.length <= 2 ? false : true);
 
 		const validLines = songLyrics?.split("\n").filter((line) => lineIsValid(line));
-		const allValidWords = validLines?.map((line) => line.split(" "));
 
-		const lyricsWithData = allValidWords?.map((line) => {
-			const lineWithData = line.map((word) => {
-                const hasGap = (this.chance() <= this.dificulty && this.validateWord(word)) ? true : false;
-				return { text: word, gap: hasGap };
-			});
-            return lineWithData
+		const linesWithGaps = validLines.map((line) => {
+			const words = line.split(" ");
+			const putGapsIn = [];
+			if (this.chance() <= this.dificulty) {
+				const numberOfGaps = this.randomNumber(words.length / 4) ?? 1;
+				do {
+					const randomI = this.randomIndex(words.length);
+					const randomWord = words[randomI];
+					if (this.wordIsValid(randomWord) && putGapsIn.indexOf(randomI) < 0) {
+						putGapsIn.push(randomI);
+					}
+				} while (putGapsIn.length <= numberOfGaps);
+			}
+			const wordsWithGaps = words.map((word, i) => ({ text: word, gap: putGapsIn.indexOf(i) >= 0 }));
+			return wordsWithGaps;
 		});
 
-        return lyricsWithData
+		return linesWithGaps;
 	}
 
-	private validateWord(word: string) {
-        const forbiddenStarts = ["(","[","¡",'"',"'"]
-        const forbiddenEnds = ["?","!",",",")",":",";","]", '"', "'"]
-        let isWordValid = true;
+	private wordIsValid(word: string) {
+		const forbiddenStarts = ["(", "[", "¡", '"', "'", "¿"];
+		const forbiddenEnds = ["?", "!", ",", ")", ":", ";", "]", '"', "'"];
+		let isWordValid = true;
 
-        forbiddenStarts.forEach(specialChar => {
-            if(word.startsWith(specialChar)){
-                isWordValid = false;
-            }
-        })
+		forbiddenStarts.forEach((specialChar) => {
+			if (word.startsWith(specialChar)) {
+				isWordValid = false;
+			}
+		});
 
-        forbiddenEnds.forEach(specialChar => {
-            if(word.endsWith(specialChar)){
-                isWordValid = false;
-            }
-        })
+		forbiddenEnds.forEach((specialChar) => {
+			if (word.endsWith(specialChar)) {
+				isWordValid = false;
+			}
+		});
 
 		return isWordValid && word.trim();
 	}
 
 	public chance() {
-		return Math.random() * 100;;
+		return Math.random() * 100;
+	}
+
+	private randomNumber(n) {
+		return Math.floor(Math.random() * n);
+	}
+
+	private randomIndex(n) {
+		return this.randomNumber(n);
 	}
 
 	public get songLyrics(): string {
