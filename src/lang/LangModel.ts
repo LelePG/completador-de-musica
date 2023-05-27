@@ -8,19 +8,20 @@ export default class langModel {
 	private _textProblemsFound: string;
 	private _textNoTitle: string;
 	private _textNoAuthor: string;
+	private _textNoAPIKey: string;
+	private _textOtherError: string;
 	private _textMainTitle: string;
 	private _textSongTitle: string;
 	private _textSongAuthor: string;
 	private _textDificulty: string;
 	private _textDoneBy: string;
 
-	public setMainPageText(textMainTitle: string, textSongTitle: string, textSongAuthor: string, textDificulty: string, textDoneBy:string){
+	public setMainPageText(textMainTitle: string, textSongTitle: string, textSongAuthor: string, textDificulty: string, textDoneBy: string) {
 		this._textMainTitle = textMainTitle;
 		this._textSongTitle = textSongTitle;
 		this._textSongAuthor = textSongAuthor;
 		this._textDificulty = textDificulty;
 		this._textDoneBy = textDoneBy;
-
 	}
 
 	public setSongPageButtons(textCorrect: string, textCleanAll: string, textShowAll: string, textHideAll: string, textReload: string, textGoBack: string) {
@@ -32,10 +33,12 @@ export default class langModel {
 		this._textGoBack = textGoBack;
 	}
 
-	public setErrorMessages(textProblemsFound: string, textNoTitle: string, textNoAuthor: string) {
+	public setErrorMessages(textProblemsFound: string, textNoTitle: string, textNoAuthor: string, textNoAPIKey: string, textOtherError: string) {
 		this._textProblemsFound = textProblemsFound;
 		this._textNoTitle = textNoTitle;
 		this._textNoAuthor = textNoAuthor;
+		this._textNoAPIKey = textNoAPIKey;
+		this._textOtherError = textOtherError;
 	}
 
 	public get textCorrect(): string {
@@ -64,6 +67,12 @@ export default class langModel {
 	}
 	public get textNoTitle(): string {
 		return this._textNoTitle;
+	}
+	public get textNoAPIKey(): string {
+		return this._textNoAPIKey;
+	}
+	public get textOtherError(): string {
+		return this._textOtherError;
 	}
 	public get textSongAuthor(): string {
 		return this._textSongAuthor;

@@ -18,7 +18,16 @@ export default function InitialPage() {
 		searchSong(options.formatted())
 			.then((songs) => setFoundSongs(songs))
 			.catch((e) => {
-				const errorResponse = String(e).includes("title") ? language.textNoTitle : language.textNoAuthor;
+				let errorResponse;
+				if(String(e).includes("title")){
+					errorResponse = language.textNoTitle
+				} else if (String(e).includes("author")){
+					errorResponse = language.textNoAuthor
+				} else if (String(e).includes("apikey")){
+					errorResponse = language.textNoAPIKey
+				} else{
+					errorResponse = language.textOtherError
+				}
 				setFoundSongs([<p key="0">{language.textProblemsFound}</p>, <p key="1">{errorResponse}</p>]);
 			});
 
