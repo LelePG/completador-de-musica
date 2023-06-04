@@ -31,13 +31,15 @@ export default class songLyricsModel {
 			const putGapsIn = [];
 			if (this.chance() <= this.dificulty) {
 				const numberOfGaps = this.randomNumber(words.length / 4) ?? 1;
+				let tries = 0;
 				do {
 					const randomI = this.randomIndex(words.length);
 					const randomWord = words[randomI];
 					if (this.wordIsValid(randomWord) && putGapsIn.indexOf(randomI) < 0) {
 						putGapsIn.push(randomI);
+						tries++;
 					}
-				} while (putGapsIn.length <= numberOfGaps);
+				} while (putGapsIn.length <= numberOfGaps && tries <= 10);
 			}
 			const wordsWithGaps = words.map((word, i) => ({ text: word, gap: putGapsIn.indexOf(i) >= 0 }));
 			return wordsWithGaps;
@@ -48,7 +50,7 @@ export default class songLyricsModel {
 
 	private wordIsValid(word: string) {
 		const forbiddenStarts = ["(", "[", "¡", '"', "'", "¿"];
-		const forbiddenEnds = ["?", "!", ",", ")", ":", ";", "]", '"', "'"];
+		const forbiddenEnds = ["?", "!", ",", ")", ":", ";", "]", '"', "'", "..."];
 		let isWordValid = true;
 
 		forbiddenStarts.forEach((specialChar) => {
