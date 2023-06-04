@@ -54,7 +54,7 @@ export default function InitialPage() {
 				<input
 					type="range"
 					name="dificulty"
-					min="30"
+					min="10"
 					max="90"
 					value={dificultySlider}
 					step="5"
