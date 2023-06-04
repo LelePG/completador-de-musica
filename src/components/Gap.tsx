@@ -17,11 +17,11 @@ export default function Gap(props: gapProps) {
 
 	function changeFocus(e) {
 		const currentIndex = props.focusRef.current.findIndex((i) => i === inputRef);
-		if (e.key === "ArrowUp" || e.key == "ArrowLeft") {
+		if (e.key === "ArrowUp") {
 			if (currentIndex > 0) {
 				props.focusRef.current[currentIndex - 1]?.current.focus();
 			}
-		} else if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+		} else if (e.key === "ArrowDown") {
 			if (currentIndex < props.focusRef.current.length - 1) {
 				props.focusRef.current[currentIndex + 1]?.current.focus();
 			}
