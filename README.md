@@ -1,6 +1,6 @@
 ## 🎶 Completador de Música
 ![Gif mostrando o funcionamento da aplicação](images/main.gif)
-[Clique aqui para ver o projeto online](https://completador-de-musica.vercel.app/)
+
 ## 💭 O que é este projeto?
 Este projeto é uma aplicação web desenvolvida com os frameworks Next.js e Tailwind que tem como objetivo ajudar no estudo de línguas estrangeiras através de músicas. Uma vez na página inicial da aplicação você deve informar o nome de uma música e do seu autor, o que mostrará uma lista de músicas encontradas, então basta selecionar a música que você deseja, colocá-la para tocar em alguma plataforma como youtube ou spotify e preencher as lacunas presentes na letra com a palavra correta. As lacunas são sorteadas de maneira aleatória, o que permite que você sempre tenha palavras diferentes para completar e assim melhorar suas habilidades na língua que está tentando aprender.
 
