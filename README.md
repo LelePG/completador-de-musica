@@ -1,5 +1,6 @@
 ## 🎶 Completador de Música
 ![Gif mostrando o funcionamento da aplicação](images/main.gif)
+[Clique aqui para ver o projeto funcionando](https://completemusica.lelepg.app/)
 
 ## 💭 O que é este projeto?
 Este projeto é uma aplicação web desenvolvida com os frameworks Next.js e Tailwind que tem como objetivo ajudar no estudo de línguas estrangeiras através de músicas. Uma vez na página inicial da aplicação você deve informar o nome de uma música e do seu autor, o que mostrará uma lista de músicas encontradas, então basta selecionar a música que você deseja, colocá-la para tocar em alguma plataforma como youtube ou spotify e preencher as lacunas presentes na letra com a palavra correta. As lacunas são sorteadas de maneira aleatória, o que permite que você sempre tenha palavras diferentes para completar e assim melhorar suas habilidades na língua que está tentando aprender.
@@ -11,7 +12,7 @@ Depois disso, na página principal do projeto será preciso rodar os comandos `n
 
 *Obs: A porta 3000 é a porta padrão, mas recomendo que você veja em qual porta o projeto realmente será rodado através do terminal onde o comando `npm run dev` foi usado.*
 
-Caso você queira acessar o projeto online, [clique aqui](https://completador-de-musica.vercel.app/) para ver o deploy feito na plataforma Vercel.
+Caso você queira acessar o projeto online, [clique aqui](https://completemusica.lelepg.app/) para ver o deploy feito na plataforma Vercel.
 
 ## 🤔 Como utilizar este projeto?
 Na página inicial da aplicação você deve colocar o nome da música e da pessoa ou banda a qual esta música está associada. Nesta tela inicial você também pode selecionar a dificuldade da música. quanto maior a dificuldade, mais lacunas irão aparecer para que você complete. Uma vez que o nome e a autoria da música tenham sido selecionados, você deve clicar no botão de pesquisa. Isso fará com que uma lista com os resultados para a sua busca seja renderizada, e então basta clicar sobre o card que contém a música desejada, e aqui vale notar que como as músicas são obtidas através da API, músicas em vários idiomas estão disponíveis. Uma vez que você tenha clicado no card da música, a aplicação fará a navegação para a página de letra da música, que tem a interface abaixo:
