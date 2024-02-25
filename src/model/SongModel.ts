@@ -5,15 +5,11 @@ interface FormattedGap {
 
 export default class SongLyricsModel {
 	private _songLyrics: string;
-	private _artist: string;
 	private _difficulty: number;
-	private _songTitle: string;
 	private _formattedSong: FormattedGap[][];
 
-	constructor(songTitle: string, songLyrics: string, artist: string, difficulty: number) {
-		this._songTitle = songTitle;
+	constructor(songLyrics: string, difficulty: number) {
 		this._songLyrics = songLyrics;
-		this._artist = artist;
 		this._difficulty = difficulty;
 		this._formattedSong = this.formatter(songLyrics);
 	}
@@ -26,12 +22,12 @@ export default class SongLyricsModel {
 		return text.startsWith("{") || text.endsWith("}");
 	}
 
-	private formatter(songLyrics: string):FormattedGap[][] {
+	private formatter(songLyrics: string): FormattedGap[][] {
 		const lineIsValid = (line) => (this.hasBrackets(line) || this.hasCurlyBraces(line) || line.length <= 2 ? false : true);
 
 		const validLines = songLyrics?.split("\n").filter((line) => lineIsValid(line));
 
-		const linesWithGaps = validLines.map((line) => {
+		const linesWithGaps = validLines?.map((line) => {
 			const words = line.split(" ");
 			const putGapsIn = [];
 			if (this.chance() <= this.difficulty) {
@@ -53,15 +49,15 @@ export default class SongLyricsModel {
 		return linesWithGaps;
 	}
 
-    private wordIsValid(word: string): string {
-        const forbiddenStarts = ["(", "[", "¡", '"', "'", "¿"];
-        const forbiddenEnds = ["?", "!", ",", ")", ":", ";", "]", '"', "'", "..."];
+	private wordIsValid(word: string): string {
+		const forbiddenStarts = ["(", "[", "¡", '"', "'", "¿"];
+		const forbiddenEnds = ["?", "!", ",", ")", ":", ";", "]", '"', "'", "..."];
 
-        const startsWithForbidden = forbiddenStarts.some(char => word.startsWith(char));
-        const endsWithForbidden = forbiddenEnds.some(char => word.endsWith(char));
+		const startsWithForbidden = forbiddenStarts.some((char) => word.startsWith(char));
+		const endsWithForbidden = forbiddenEnds.some((char) => word.endsWith(char));
 
-        return !(startsWithForbidden || endsWithForbidden) && word.trim();
-    }
+		return !(startsWithForbidden || endsWithForbidden) && word.trim();
+	}
 
 	public chance() {
 		return Math.random() * 100;
@@ -85,13 +81,5 @@ export default class SongLyricsModel {
 
 	public get formattedSong(): any {
 		return this._formattedSong;
-	}
-
-	public get songTitle(): string {
-		return this._songTitle;
-	}
-
-	public get artist(): string {
-		return this._artist;
 	}
 }
