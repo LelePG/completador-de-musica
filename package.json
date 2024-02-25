@@ -9,8 +9,7 @@
   },
   "dependencies": {
     "@types/react-dom": "^18.2.19",
-    "genius-lyrics": "^4.4.6",
-    "genius-lyrics-api": "^3.2.0",
+    "genius-lyrics-api-mod": "^3.2.9",
     "next": "^14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -21,9 +20,6 @@
     "autoprefixer": "^10.4.2",
     "eslint": "8.6.0",
     "eslint-config-next": "^14.1.0",
-    "minimist": ">=1.2.6",
-    "node-fetch": ">=3.2.10",
-    "nth-check": ">=2.0.1",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.15",
     "typescript": "^4.6.2"

@@ -1,4 +1,4 @@
-import { searchSong, getLyrics } from "genius-lyrics-api";
+import { searchSong, getLyrics } from "genius-lyrics-api-mod";
 
 export default class ApiService {
 	private static readonly _apiKey: string = process.env.NEXT_PUBLIC_CLIENT_ACCESS_TOKEN;

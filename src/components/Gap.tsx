@@ -60,7 +60,7 @@ export default function Gap(props: GapProps) {
 
 	const inputView = (
 		<input
-			className={`w-4/5 rounded-md border mr-1 text-center border-black`}
+			className={`w-4/5 rounded-md border mr-2 text-center border-black`}
 			value={currentGap.inputText}
 			onChange={(e) => updateText(e.target.value)}
 			type="text"
@@ -72,11 +72,11 @@ export default function Gap(props: GapProps) {
 	const textView = <p className={`w-4/5 rounded-md text-center font-bold `}>{currentGap.word}</p>;
 
 	return (
-		<div className={`flex w-32 h-8 p-1 border justify-center rounded-md border-black mr-1 ${currentGap.background}`}>
+		<div className={`flex w-44 h-10 p-1 border justify-center rounded-md border-black mr-2 ${currentGap.background}`}>
 			{currentGap.isOpen ? textView : inputView}
-			<aside className="w-3">
-				{Check({ callback: eventHandlers.correct, size: 3 })}
-				{Bulb({ callback: toggleVisibility, size: 3 })}
+			<aside className="w-4">
+				{Check({ callback: eventHandlers.correct, size: 4 })}
+				{Bulb({ callback: toggleVisibility, size: 4 })}
 			</aside>
 		</div>
 	);

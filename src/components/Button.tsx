@@ -6,8 +6,9 @@ interface ButtonProps {
 
 export default function Button({ text, color, callback }: ButtonProps) {
 	return (
-		<button className={`h-full p-5 mx-3 my-2 rounded-md z-10 shadow-2xl ${color} hover:bg-violet-400`} onClick={callback}>
-			{text}
-		</button>
+		<button className={`px-8 leading-none m-2 text-gray-50 font-semibold text-2xl rounded-md shadow-md ${color} hover:bg-slate-800 h-16`} onClick={callback}>
+    {text}
+</button>
+
 	);
 }

@@ -34,7 +34,7 @@ export default function InitialPage() {
 	});
 
 	return (
-		<div className="flex flex-col justify-center items-center text-lg mt-10">
+		<div className="flex flex-col justify-center items-center text-lg">
 			<h1 className="text-2xl font-bold m-5">{language.textMainTitle}</h1>
 			<div className="flex flex-wrap mb-5">
 				<SearchInput value={title} textLabel={language.textSongTitle} callback={setTitle} defaultText="Heroes" />
