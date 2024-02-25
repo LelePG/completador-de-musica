@@ -13,14 +13,14 @@ export default class langModel {
 	private _textMainTitle: string;
 	private _textSongTitle: string;
 	private _textSongAuthor: string;
-	private _textDificulty: string;
+	private _textDifficulty: string;
 	private _textDoneBy: string;
 
-	public setMainPageText(textMainTitle: string, textSongTitle: string, textSongAuthor: string, textDificulty: string, textDoneBy: string) {
+	public setMainPageText(textMainTitle: string, textSongTitle: string, textSongAuthor: string, textDifficulty: string, textDoneBy: string) {
 		this._textMainTitle = textMainTitle;
 		this._textSongTitle = textSongTitle;
 		this._textSongAuthor = textSongAuthor;
-		this._textDificulty = textDificulty;
+		this._textDifficulty = textDifficulty;
 		this._textDoneBy = textDoneBy;
 	}
 
@@ -84,8 +84,8 @@ export default class langModel {
 	public get textMainTitle(): string {
 		return this._textMainTitle;
 	}
-	public get textDificulty(): string {
-		return this._textDificulty;
+	public get textDifficulty(): string {
+		return this._textDifficulty;
 	}
 	public get textDoneBy(): string {
 		return this._textDoneBy;

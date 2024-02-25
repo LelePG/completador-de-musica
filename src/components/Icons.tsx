@@ -1,9 +1,14 @@
-const Check = (callback, tamanho:number) => {
+interface IconProps {
+	size?: number;
+	callback?: () => void;
+}
+
+export const Check = ({callback, size}:IconProps) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			onClick={callback}
-			className={`h-${tamanho} w-${tamanho}`}
+			className={`h-${size} w-${size}`}
 			fill="none"
 			viewBox="0 0 24 24"
 			stroke="currentColor"
@@ -18,12 +23,12 @@ const Check = (callback, tamanho:number) => {
 	);
 };
 
-const MagGlass = (callback, tamanho:number) => {
+export const MagGlass = ({callback, size}:IconProps) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			onClick={callback}
-			className={`h-${tamanho} w-${tamanho}`}
+			className={`h-${size} w-${size}`}
 			fill="none"
 			viewBox="0 0 24 24"
 			stroke="currentColor"
@@ -38,12 +43,12 @@ const MagGlass = (callback, tamanho:number) => {
 	);
 };
 
-const Bulb = (callback, tamanho:number) => {
+export const Bulb = ({callback, size}:IconProps) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			onClick={callback}
-			className={`h-${tamanho} w-${tamanho}`}
+			className={`h-${size} w-${size}`}
 			fill="none"
 			viewBox="0 0 24 24"
 			stroke="currentColor"
@@ -58,11 +63,11 @@ const Bulb = (callback, tamanho:number) => {
 	);
 };
 
-const Github=(tamanho:number)=>{
+export const Github=({callback, size}:IconProps)=>{
 	return(<svg
 		fill="#000000"
-		width={tamanho}
-		height={tamanho}
+		width={size}
+		height={size}
 		version="1.1"
 		id="lni_lni-github-original"
 		xmlns="http://www.w3.org/2000/svg"
@@ -81,4 +86,3 @@ C62.9,15.6,49,1.8,32,1.8z"
 	</svg>)
 }
 
-export { Check, MagGlass,Bulb, Github };

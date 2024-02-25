@@ -1,5 +1,12 @@
+interface FormattedOptions {
+	apiKey: string;
+	title: string;
+	artist: string;
+	optimizeQuery: boolean;
+}
+
 export default class Options {
-	private _apiKey: string = process.env.NEXT_PUBLIC_CLIENT_ACCESS_TOKEN;
+	private readonly _apiKey: string = process.env.NEXT_PUBLIC_CLIENT_ACCESS_TOKEN;
 	private _title: string;
 	private _artist: string;
 	private _optimizeQuery: boolean = true;
@@ -25,20 +32,20 @@ export default class Options {
 		return this._optimizeQuery;
 	}
 
-	public formatted(): object {
+	public formatted(): FormattedOptions {
 		return {
 			apiKey: this.apiKey,
 			title: this.title,
 			artist: this.artist,
-			optimezeQuery: this.optimizeQuery,
+			optimizeQuery: this.optimizeQuery,
 		};
 	}
 
 	public changeTitle(value: string): Options {
-		return new Options(value, this.artist);
+		return new Options(value, this._artist);
 	}
 
 	public changeArtist(value: string): Options {
-		return new Options(this.title, value);
+		return new Options(this._title, value);
 	}
 }

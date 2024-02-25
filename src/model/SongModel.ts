@@ -1,35 +1,40 @@
-export default class songLyricsModel {
+interface FormattedGap {
+	text: string;
+	gap: boolean;
+}
+
+export default class SongLyricsModel {
 	private _songLyrics: string;
 	private _artist: string;
-	private _dificulty: number;
+	private _difficulty: number;
 	private _songTitle: string;
-	private _formattedSong: any;
+	private _formattedSong: FormattedGap[][];
 
-	constructor(songTitle: string, songLyrics: string, artist: string, dificulty: number) {
+	constructor(songTitle: string, songLyrics: string, artist: string, difficulty: number) {
 		this._songTitle = songTitle;
 		this._songLyrics = songLyrics;
 		this._artist = artist;
-		this._dificulty = dificulty;
+		this._difficulty = difficulty;
 		this._formattedSong = this.formatter(songLyrics);
 	}
 
-	private textHasBrackets(text) {
+	private hasBrackets(text) {
 		return text.startsWith("[") || text.endsWith("]");
 	}
 
-	private textHasCurlyBraces(text) {
+	private hasCurlyBraces(text) {
 		return text.startsWith("{") || text.endsWith("}");
 	}
 
-	private formatter(songLyrics: string) {
-		const lineIsValid = (line) => (this.textHasBrackets(line) || this.textHasCurlyBraces(line) || line.length <= 2 ? false : true);
+	private formatter(songLyrics: string):FormattedGap[][] {
+		const lineIsValid = (line) => (this.hasBrackets(line) || this.hasCurlyBraces(line) || line.length <= 2 ? false : true);
 
 		const validLines = songLyrics?.split("\n").filter((line) => lineIsValid(line));
 
 		const linesWithGaps = validLines.map((line) => {
 			const words = line.split(" ");
 			const putGapsIn = [];
-			if (this.chance() <= this.dificulty) {
+			if (this.chance() <= this.difficulty) {
 				const numberOfGaps = this.randomNumber(words.length / 4) ?? 1;
 				let tries = 0;
 				do {
@@ -48,25 +53,15 @@ export default class songLyricsModel {
 		return linesWithGaps;
 	}
 
-	private wordIsValid(word: string) {
-		const forbiddenStarts = ["(", "[", "¡", '"', "'", "¿"];
-		const forbiddenEnds = ["?", "!", ",", ")", ":", ";", "]", '"', "'", "..."];
-		let isWordValid = true;
+    private wordIsValid(word: string): string {
+        const forbiddenStarts = ["(", "[", "¡", '"', "'", "¿"];
+        const forbiddenEnds = ["?", "!", ",", ")", ":", ";", "]", '"', "'", "..."];
 
-		forbiddenStarts.forEach((specialChar) => {
-			if (word.startsWith(specialChar)) {
-				isWordValid = false;
-			}
-		});
+        const startsWithForbidden = forbiddenStarts.some(char => word.startsWith(char));
+        const endsWithForbidden = forbiddenEnds.some(char => word.endsWith(char));
 
-		forbiddenEnds.forEach((specialChar) => {
-			if (word.endsWith(specialChar)) {
-				isWordValid = false;
-			}
-		});
-
-		return isWordValid && word.trim();
-	}
+        return !(startsWithForbidden || endsWithForbidden) && word.trim();
+    }
 
 	public chance() {
 		return Math.random() * 100;
@@ -84,8 +79,8 @@ export default class songLyricsModel {
 		return this._songLyrics;
 	}
 
-	public get dificulty(): number {
-		return this._dificulty;
+	public get difficulty(): number {
+		return this._difficulty;
 	}
 
 	public get formattedSong(): any {

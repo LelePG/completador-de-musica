@@ -1,11 +1,11 @@
-interface searchInputProps {
+interface SearchInputProps {
 	value: string;
 	textLabel: string;
 	defaultText: string;
 	callback: Function;
 }
 
-export default function SearchInput(props: searchInputProps) {
+export default function SearchInput(props: SearchInputProps) {
 	return (
 		<>
 			<label className="my-auto mx-3 align-middle text-bold">{props.textLabel}</label>

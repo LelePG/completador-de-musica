@@ -8,18 +8,18 @@ interface SongCardProps {
 		id: number;
 		albumArt: string;
 	};
-	dificulty: number;
+	difficulty: number;
 }
 
-export default function SongCard(props: SongCardProps) {
+export default function SongCard({ song, difficulty }: SongCardProps) {
 	const router = useRouter();
 
 	const routeObject = {
 		pathname: "/songPage",
 		query: {
-			title: props.song.title,
-			path: props.song.url.split("/").pop(),
-			dificulty: props.dificulty,
+			title: song.title,
+			path: song.url.split("/").pop(),
+			difficulty,
 		},
 	};
 
@@ -29,10 +29,10 @@ export default function SongCard(props: SongCardProps) {
 	};
 
 	return (
-		<li key={props.song.id} className="w-1/4  m-2 rounded-md border-2 border-black">
-			<a onClick={(e) => changePath(e)} className="flex justify-evenly items-center h-full w-full bg-neutral-100  p-2 hover:bg-neutral-200">
-				<Image loader={()=>props.song.albumArt} src="album" className="w-20 rounded-sm" alt= "album art" width={100} height={100}/>
-				<span className="ml-4">{props.song.title}</span>
+		<li className=" w-52 p-3 m-2 rounded-md border-2 border-black bg-neutral-100 hover:bg-neutral-200 ">
+			<a onClick={changePath} className="flex flex-col gap-1 items-center m-1 ">
+				<Image loader={() => song.albumArt} src="album" alt="album art" width={150} height={150} />
+				<span className="text-xl text-center">{song.title}</span>
 			</a>
 		</li>
 	);

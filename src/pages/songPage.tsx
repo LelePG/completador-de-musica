@@ -5,35 +5,55 @@ import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import language from "../lang/ptbr";
 import { Github } from "../components/Icons";
+import { useCallback } from "react";
+
+interface SongPageProps {
+	songTitle: string;
+	difficulty: string;
+	lyrics: string;
+}
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-	return {
-		props: {
-			songTitle: context.query?.title,
-			dificulty: context.query?.dificulty,
-			lyrics: await getLyrics(`https://genius.com/${context.query?.path}`),
-		},
-	};
+    let lyrics = '';
+    try {
+        lyrics = await getLyrics(`https://genius.com/${context.query?.path}`);
+    } catch (error) {
+        console.error('Failed to get lyrics:', error);
+    }
+
+    return {
+        props: {
+            songTitle: context.query?.title,
+            difficulty: context.query?.difficulty,
+            lyrics,
+        },
+		
+    };
 };
 
-export default function SongPage(props) {
+export default function SongPage({ songTitle, difficulty, lyrics }:SongPageProps) {
 	const router = useRouter();
 
-	const songTitleAndAuthor = String(props.songTitle).split("by");
-	const songTitle = songTitleAndAuthor.shift()?.trim().toUpperCase();
+	const songTitleAndAuthor = String(songTitle).split("by");
+	const title = songTitleAndAuthor.shift()?.trim().toUpperCase();
 	const artist = songTitleAndAuthor.pop()?.trim().toUpperCase();
 
-	const callbackCorrect = () => window.dispatchEvent(new CustomEvent("correct"));
-	const callbackClean = () => window.dispatchEvent(new CustomEvent("clean"));
-	const callbackShow = () => window.dispatchEvent(new CustomEvent("open"));
-	const callbackHide = () => window.dispatchEvent(new CustomEvent("close"));
-	const callbackReload = () => window.location.reload();
+	const dispatchEvent = useCallback((eventName) => {
+        window.dispatchEvent(new CustomEvent(eventName));
+    }, []);
+
+    const callbackCorrect = () => dispatchEvent("correct");
+    const callbackClean = () => dispatchEvent("clean");
+    const callbackShow = () => dispatchEvent("open");
+    const callbackHide = () => dispatchEvent("close");
+    const callbackReload = () => window.location.reload();
+    const callbackGoBack = useCallback(() => router.push("/"), [router])
 
 	return (
 		<main className="flex justify-center m-5 pb-16">
-			<Song songTitle={songTitle} songArtist={artist} songLyrics={props.lyrics} dificulty={parseInt(String(props.dificulty))} />
+			<Song songTitle={title} songArtist={artist} songLyrics={lyrics} difficulty={parseInt(String(difficulty))} />
 			<a href="https://github.com/LelePG/completador-de-musica" className="ml-8 my-3 sticky top-3 right-10" target="_blank" rel="noreferrer">
-            {Github(40)}
+            {Github({size:40})}
             </a>
 			<section className="fixed bottom-3 w-screen h-25 flex justify-center flex-wrap ">
 				<Button text={language.textCorrect} callback={callbackCorrect} color="bg-red-300" />
@@ -41,7 +61,7 @@ export default function SongPage(props) {
 				<Button text={language.textShowAll} callback={callbackShow} color="bg-indigo-200" />
 				<Button text={language.textHideAll} callback={callbackHide} color="bg-green-300" />
 				<Button text={language.textReload} callback={callbackReload} color="bg-pink-300" />
-				<Button text={language.textGoBack} callback={() => router.push("/")} color="bg-blue-300" />
+				<Button text={language.textGoBack} callback={callbackGoBack} color="bg-blue-300" />
 			</section>
 		</main>
 	);
