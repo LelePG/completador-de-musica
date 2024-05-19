@@ -6,13 +6,16 @@ import { InputContext } from "../../context/InputContext";
 interface GapProps {
 	gapWord: string;
 	gapIndex: number;
-	// focusRef: Array<React.RefObject<HTMLInputElement>>;
 }
 
 export default function Gap(props: GapProps) {
 	const [currentGap, setCurrentGap] = useState(new WordGapModel(props.gapWord));
+	const { addRef } = useContext(InputContext);
 	const inputRef = useRef<HTMLInputElement>(null);
-	const inputRefs = useContext(InputContext);
+
+	useEffect(() => {
+		addRef(props.gapIndex, inputRef);
+	}, [props.gapIndex]);
 
 	const toggleVisibility = useCallback(() => setCurrentGap(currentGap.toggleVisibility()), [currentGap]);
 	const updateText = useCallback((texto: string) => setCurrentGap(currentGap.updateText(texto)), [currentGap]);

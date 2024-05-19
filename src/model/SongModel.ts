@@ -27,6 +27,7 @@ export default class SongLyricsModel {
 
 		const validLines = songLyrics?.split("\n").filter((line) => lineIsValid(line));
 
+		let gapIndex = 0;
 		const linesWithGaps = validLines?.map((line) => {
 			const words = line.split(" ");
 			const putGapsIn = [];
@@ -42,7 +43,10 @@ export default class SongLyricsModel {
 					}
 				} while (putGapsIn.length <= numberOfGaps && tries <= 10);
 			}
-			const wordsWithGaps = words.map((word, i) => ({ text: word, gap: putGapsIn.indexOf(i) >= 0 }));
+			const wordsWithGaps = words.map((word, i) => {
+				const isGapped = putGapsIn.indexOf(i) >= 0;
+				return { text: word, gap: isGapped, gapIndex: isGapped ? gapIndex++ : null };
+			});
 			return wordsWithGaps;
 		});
 

@@ -7,3 +7,6 @@ Tarefas ainda a serem feitas
 - adicionar um ssupence e um carregando
 - corrigir problemas das escritas e internacionalização
 - atualizar README com informações da nova versão
+- corrigir o problema das setas
+- mudar imports pra usar @
+- adicionar instruções

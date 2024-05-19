@@ -1,12 +1,13 @@
 "use client";
-import Button from "../../components/Button";
-import Song from "../../components/Song";
+import Button from "../../components/template/Button";
+import Song from "../../components/song/Song";
 import { useRouter } from "next/navigation";
 import language from "../../lang/ptbr";
 import { useCallback, useEffect, useState } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import ApiService from "../../model/ApiService";
-import GithubLink from "../../components/GithubLink";
+import GithubLink from "../../components/template/GithubLink";
+import Loading from "../../components/template/Loading";
 
 export default function SongPage() {
 	const { get } = useLocalStorage();
@@ -41,17 +42,22 @@ export default function SongPage() {
 	const callbackGoBack = useCallback(() => router.push("/"), [router]);
 
 	return (
-		<main className="flex justify-center m-5 pb-24 pt-8">
-			<Song title={song?.title} artist={song?.artist} lyrics={song?.lyrics} difficulty={parseInt(String(song?.difficulty))} />
-			<section className="fixed bottom-3 w-10/12 h-25 flex justify-center flex-wrap ">
-				<Button text={language.textCorrect} callback={callbackCorrect} color="bg-red-500" />
-				<Button text={language.textCleanAll} callback={callbackClean} color="bg-yellow-500" />
-				<Button text={language.textShowAll} callback={callbackShow} color="bg-indigo-500" />
-				<Button text={language.textHideAll} callback={callbackHide} color="bg-green-500" />
-				<Button text={language.textReload} callback={callbackReload} color="bg-pink-500" />
-				<Button text={language.textGoBack} callback={callbackGoBack} color="bg-blue-500" />
-				<GithubLink />
-			</section>
+		<main className="flex justify-center pb-24 pt-8 overflow-hidden">
+			{song === null && <Loading />}
+			{song !== null && (
+				<>
+					<Song title={song?.title} artist={song?.artist} lyrics={song?.lyrics} difficulty={parseInt(String(song?.difficulty))} />
+					<section className="fixed bottom-3 w-10/12 h-25 flex justify-center flex-wrap ">
+						<Button text={language.textCorrect} callback={callbackCorrect} color="bg-red-500" />
+						<Button text={language.textCleanAll} callback={callbackClean} color="bg-yellow-500" />
+						<Button text={language.textShowAll} callback={callbackShow} color="bg-indigo-500" />
+						<Button text={language.textHideAll} callback={callbackHide} color="bg-green-500" />
+						<Button text={language.textReload} callback={callbackReload} color="bg-pink-500" />
+						<Button text={language.textGoBack} callback={callbackGoBack} color="bg-blue-500" />
+						<GithubLink />
+					</section>
+				</>
+			)}
 		</main>
 	);
 }

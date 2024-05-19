@@ -1,10 +1,10 @@
 "use client";
 import { useCallback, useState } from "react";
-import Button from "../components/Button";
-import SongCard from "../components/SongCard";
-import SearchInput from "../components/SearchInput";
+import Button from "../components/template/Button";
+import SongCard from "../components/home/SongCard";
+import SearchInput from "../components/template/SearchInput";
 import language from "../lang/ptbr";
-import Footer from "../components/Footer";
+import Footer from "../components/home/Footer";
 import ApiService from "../model/ApiService";
 
 export default function InitialPage() {
