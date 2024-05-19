@@ -1,29 +1,27 @@
 {
-  "name": "complete-a-musica",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@types/react-dom": "^18.2.19",
-    "genius-lyrics": "^4.4.7",
-    "genius-lyrics-api": "^3.2.1",
-    "genius-lyrics-api-mod": "^3.2.9",
-    "next": "^14.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "^17.0.31",
-    "@types/react": "^18.2.58",
-    "autoprefixer": "^10.4.2",
-    "eslint": "8.6.0",
-    "eslint-config-next": "^14.1.0",
-    "postcss": "^8.4.5",
-    "tailwindcss": "^3.0.15",
-    "typescript": "^4.6.2"
-  }
+	"name": "complete-a-musica",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@types/react-dom": "^18.2.19",
+		"genius-lyrics-api": "^3.2.1",
+		"next": "^14.1.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@types/node": "^17.0.31",
+		"@types/react": "^18.2.58",
+		"autoprefixer": "^10.4.2",
+		"eslint": "8.6.0",
+		"eslint-config-next": "^14.1.0",
+		"postcss": "^8.4.5",
+		"tailwindcss": "^3.0.15",
+		"typescript": "^4.6.2"
+	}
 }
