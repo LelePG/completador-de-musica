@@ -1,35 +1,18 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import WordGapModel from "../model/GapModel";
-import { Check, Bulb } from "./Icons";
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import WordGapModel from "../../model/GapModel";
+import { Check, Bulb } from "../template/Icons";
+import { InputContext } from "../../context/InputContext";
 
 interface GapProps {
 	gapWord: string;
-	focusRef: Array<React.RefObject<HTMLInputElement>>;
+	gapIndex: number;
+	// focusRef: Array<React.RefObject<HTMLInputElement>>;
 }
 
 export default function Gap(props: GapProps) {
 	const [currentGap, setCurrentGap] = useState(new WordGapModel(props.gapWord));
 	const inputRef = useRef<HTMLInputElement>(null);
-
-	useEffect(() => {
-		props.focusRef.push(inputRef);
-	}, [props.focusRef]);
-
-	const changeFocus = useCallback(
-		(e: React.KeyboardEvent) => {
-			const currentIndex = props.focusRef.findIndex((i) => i === inputRef);
-			if (e.key === "ArrowUp") {
-				if (currentIndex > 0) {
-					props.focusRef[currentIndex - 1]?.current?.focus();
-				}
-			} else if (e.key === "ArrowDown") {
-				if (currentIndex < props.focusRef.length - 1) {
-					props.focusRef[currentIndex + 1]?.current?.focus();
-				}
-			}
-		},
-		[props.focusRef]
-	);
+	const inputRefs = useContext(InputContext);
 
 	const toggleVisibility = useCallback(() => setCurrentGap(currentGap.toggleVisibility()), [currentGap]);
 	const updateText = useCallback((texto: string) => setCurrentGap(currentGap.updateText(texto)), [currentGap]);
@@ -65,7 +48,6 @@ export default function Gap(props: GapProps) {
 			onChange={(e) => updateText(e.target.value)}
 			type="text"
 			ref={inputRef}
-			onKeyDown={(e) => changeFocus(e)}
 		/>
 	);
 
