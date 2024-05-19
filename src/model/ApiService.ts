@@ -1,15 +1,13 @@
-import { searchSong, getLyrics } from "genius-lyrics-api-mod";
+import { searchSong, getLyrics } from "genius-lyrics-api";
 
 export default class ApiService {
-	private static readonly _apiKey: string = process.env.NEXT_PUBLIC_CLIENT_ACCESS_TOKEN;
 	private static readonly _optimizeQuery: boolean = true;
 
-	static options = (title: string, artist: string) => {
+	private static options = (title: string, artist: string) => {
 		return {
-			apiKey: ApiService._apiKey,
+			apiKey: process.env.NEXT_PUBLIC_CLIENT_ACCESS_TOKEN,
 			title,
 			artist,
-			optimizeQuery: ApiService._optimizeQuery,
 		};
 	};
 

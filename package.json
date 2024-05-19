@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@types/react-dom": "^18.2.19",
+    "genius-lyrics": "^4.4.7",
+    "genius-lyrics-api": "^3.2.1",
     "genius-lyrics-api-mod": "^3.2.9",
     "next": "^14.1.0",
     "react": "^18.2.0",

@@ -26,10 +26,17 @@ export default function SongCard({ song, difficulty }: SongCardProps) {
 		});
 	};
 	return (
-		<li className=" w-52 p-3 m-2 rounded-md border-2 border-black bg-neutral-100 hover:bg-neutral-200 ">
-			<Link onClick={() => setSong()} href="/song" className="flex flex-col gap-1 items-center justify-center m-1 ">
-				<Image loader={() => song.albumArt} src="album" alt="album art" width={150} height={150} />
-				<span className="text-xl text-center break-words">{song.title}</span>
+		<li className="w-48 h-48 m-2 rounded-md border-3 border-blue-800 shadow-md shadow-gray-100 bg-neutral-100 hover:bg-neutral-200 relative overflow-hidden transform transition-transform duration-500 ease-in-out hover:scale-110">
+			<Image
+				loader={() => song.albumArt}
+				src="album"
+				alt="album art"
+				width={210}
+				height={210}
+				className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
+			/>
+			<Link onClick={() => setSong()} href="/song" className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center overflow-clip">
+				<span className="text-xl max-w-fit text-center break-words text-white relative p-2 w-full">{song.title}</span>
 			</Link>
 		</li>
 	);

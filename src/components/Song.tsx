@@ -29,7 +29,7 @@ export default function Song({ title, artist, lyrics, difficulty }: SongProps) {
 	});
 
 	return (
-		<section className="flex flex-col flex-wrap border-black border-4 p-4 shadow-2xl rounded-md w-4/6 bg-neutral-100">
+		<section className="flex flex-col flex-wrap border-black border-4 p-10 shadow-2xl rounded-md w-3/5 bg-neutral-100">
 			<h1 className="text-3xl font-bold place-self-center mb-4">{title}</h1>
 			<h2 className="text-2xl font-bold place-self-center mb-4">{artist}</h2>
 			{allLines}
