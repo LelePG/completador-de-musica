@@ -1,13 +1,13 @@
 "use client";
-import Button from "../../components/template/Button";
-import Song from "../../components/song/Song";
+import Button from "@/components/template/Button";
+import Song from "@/components/song/Song";
 import { useRouter } from "next/navigation";
-import language from "../../lang/ptbr";
+import language from "@/lang/ptbr";
 import { useCallback, useEffect, useState } from "react";
-import useLocalStorage from "../../hooks/useLocalStorage";
-import ApiService from "../../model/ApiService";
-import GithubLink from "../../components/template/GithubLink";
-import Loading from "../../components/template/Loading";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import ApiService from "@/model/ApiService";
+import GithubLink from "@/components/template/GithubLink";
+import Loading from "@/components/template/Loading";
 
 export default function SongPage() {
 	const { get } = useLocalStorage();
@@ -42,7 +42,7 @@ export default function SongPage() {
 	const callbackGoBack = useCallback(() => router.push("/"), [router]);
 
 	return (
-		<main className="flex justify-center pb-24 pt-8 overflow-hidden">
+		<div className="flex justify-center pb-24 pt-8 overflow-x-hidden">
 			{song === null && <Loading />}
 			{song !== null && (
 				<>
@@ -58,6 +58,6 @@ export default function SongPage() {
 					</section>
 				</>
 			)}
-		</main>
+		</div>
 	);
 }

@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import WordGapModel from "../../model/GapModel";
-import { Check, Bulb } from "../template/Icons";
-import { InputContext } from "../../context/InputContext";
+import WordGapModel from "@/model/GapModel";
+import { Check, Bulb } from "@/components/template/Icons";
+import { InputContext } from "@/context/InputContext";
 
 interface GapProps {
 	gapWord: string;

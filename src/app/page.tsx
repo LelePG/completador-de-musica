@@ -1,11 +1,11 @@
 "use client";
 import { useCallback, useState } from "react";
-import Button from "../components/template/Button";
-import SongCard from "../components/home/SongCard";
-import SearchInput from "../components/template/SearchInput";
-import language from "../lang/ptbr";
-import Footer from "../components/home/Footer";
-import ApiService from "../model/ApiService";
+import Button from "@/components/template/Button";
+import SongCard from "@/components/home/SongCard";
+import SearchInput from "@/components/template/SearchInput";
+import language from "@/lang/ptbr";
+import Footer from "@/components/home/Footer";
+import ApiService from "@/model/ApiService";
 
 export default function InitialPage() {
 	const [title, setTitle] = useState("heroes");

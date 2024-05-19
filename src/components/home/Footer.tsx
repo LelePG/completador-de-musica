@@ -1,4 +1,4 @@
-import { Github } from "./../template/Icons";
+import { Github } from "@/components/template/Icons";
 
 interface FooterProps {
 	text: string;

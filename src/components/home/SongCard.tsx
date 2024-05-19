@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import useLocalStorage from "../../hooks/useLocalStorage";
+import useLocalStorage from "@/hooks/useLocalStorage";
 interface SongCardProps {
 	song: {
 		title: string;

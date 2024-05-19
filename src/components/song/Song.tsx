@@ -1,6 +1,6 @@
-import Gap from "./Gap";
-import SongModel from "../../model/SongModel";
-import InputContext from "../../context/InputContext";
+import Gap from "@/components/song/Gap";
+import SongModel from "@/model/SongModel";
+import InputContext from "@/context/InputContext";
 interface SongProps {
 	title: string;
 	artist: string;
