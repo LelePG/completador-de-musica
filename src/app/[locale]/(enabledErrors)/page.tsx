@@ -22,7 +22,13 @@ export default function InitialPage(props: { params: { locale: string } }) {
 			const results = await ApiService.searchSong(title, artist);
 			setFoundSongs(results);
 		} catch (e) {
-			addError(e);
+			if (e.toString().includes("title")) {
+				addError(new Error(t("errors.songTitleNotInformed")));
+			} else if (e.toString().includes("artist")) {
+				addError(new Error(t("errors.songAuthorNotInformed")));
+			} else {
+				addError(new Error(t("errors.unknownProblem")));
+			}
 			setFoundSongs([]);
 		}
 	};

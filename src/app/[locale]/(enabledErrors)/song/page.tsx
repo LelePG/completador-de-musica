@@ -25,7 +25,7 @@ export default function SongPage() {
 			try {
 				const lyrics = await ApiService.getSongLyrics(song?.title, song?.artist);
 				if (!lyrics) {
-					throw new Error("Lyrics not found. Return to home.");
+					throw new Error(t("errors.lyricsNotFoundReturnHome"));
 				}
 				const obj = { title: song?.title, artist: song?.artist, difficulty: song?.difficulty, lyrics };
 				setSong(obj);

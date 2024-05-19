@@ -7,11 +7,13 @@
 		"madeBy": "Feito com 🪄 por LelePG"
 	},
 	"errors": {
+		"error": "Erro",
 		"followingProblems": "Os seguintes problemas foram encontrados:",
 		"songTitleNotInformed": "O título da música não foi informado.",
 		"songAuthorNotInformed": "O artista não foi informado",
 		"apiKeyIncorrect": "A chave da API está incorreta",
-		"unknownProblem": "Houve um problema desconhecido"
+		"unknownProblem": "Houve um problema desconhecido",
+		"lyricsNotFoundReturnHome": "Letra não encontrada, volte para a página inicial"
 	},
 	"songPage": {
 		"buttons": {
@@ -22,8 +24,5 @@
 			"resort": "Resortear",
 			"back": "Voltar"
 		}
-	},
-	"common_words": {
-		"by": "Von"
 	}
 }
