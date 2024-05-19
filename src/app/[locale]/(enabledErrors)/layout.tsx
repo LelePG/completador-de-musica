@@ -2,7 +2,7 @@
 import ErrorPopup from "@/components/template/ErrorPopup";
 import { ErrorMessageProvider } from "@/contexts/ErrorMessageContext";
 
-export default function ({ children }) {
+export default function Layout({ children }) {
 	return (
 		<ErrorMessageProvider>
 			{children}

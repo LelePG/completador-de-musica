@@ -33,7 +33,7 @@ export default function SongPage() {
 				addError(e);
 			}
 		})();
-	}, []);
+	});
 
 	const dispatchEvent = useCallback((eventName) => {
 		window.dispatchEvent(new CustomEvent(eventName));

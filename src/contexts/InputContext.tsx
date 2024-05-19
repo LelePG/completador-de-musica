@@ -1,4 +1,3 @@
-import { Html } from "next/document";
 import React, { MutableRefObject, createContext, useEffect, useRef } from "react";
 
 const InputContext = createContext<{

@@ -1,11 +1,6 @@
 import { Close } from "./Icons";
 
-interface PopupProps {
-	isOpen: boolean;
-	onClose: () => void;
-}
-
-export default function ({ isOpen, onClose, children }) {
+export default function Propup({ isOpen, onClose, children }) {
 	if (!isOpen) {
 		return null;
 	}

@@ -3,7 +3,7 @@ import Popup from "./Popup";
 import useErrorMessage from "@/hooks/useErrorMessage";
 import { useTranslations } from "next-intl";
 
-export default function () {
+export default function ErrorPopup() {
 	const { getErrorMessage, removeError } = useErrorMessage();
 	const message = getErrorMessage();
 	const t = useTranslations();

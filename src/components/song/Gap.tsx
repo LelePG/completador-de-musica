@@ -14,7 +14,7 @@ export default function Gap(props: GapProps) {
 
 	useEffect(() => {
 		addRef(props.gapIndex, inputRef);
-	}, [props.gapIndex]);
+	}, [props.gapIndex, addRef]);
 
 	const toggleVisibility = useCallback(() => setCurrentGap(currentGap.toggleVisibility()), [currentGap]);
 	const updateText = useCallback((texto: string) => setCurrentGap(currentGap.updateText(texto)), [currentGap]);
