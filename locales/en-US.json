@@ -1,0 +1,27 @@
+{
+	"home_page": {
+		"top_card": "Get started by editing app/page.tsx",
+		"cards": {
+			"card_1": {
+				"title": "Docs",
+				"description": "Find in-depth information about Next.js features and API."
+			},
+			"card_2": {
+				"title": "Learn",
+				"description": "Learn about Next.js in an interactive course with quizzes!"
+			},
+			"card_3": {
+				"title": "Templates",
+				"description": "Explore starter templates for Next.js."
+			},
+			"card_4": {
+				"title": "Deploy",
+				"description": "Instantly deploy your Next.js site to a shareable URL with Vercel."
+			}
+		}
+	},
+
+	"common_words": {
+		"by": "By"
+	}
+}

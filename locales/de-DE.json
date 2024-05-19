@@ -1,0 +1,27 @@
+{
+	"home_page": {
+		"top_card": "Beginnen Sie mit der Bearbeitung von app/page.tsx",
+		"cards": {
+			"card_1": {
+				"title": "Dokumente",
+				"description": "Hier finden Sie ausführliche Informationen zu den Funktionen und der API von Next.js."
+			},
+			"card_2": {
+				"title": "Learn",
+				"description": "Erfahren Sie mehr über Next.js in einem interaktiven Kurs mit Quiz!"
+			},
+			"card_3": {
+				"title": "Vorlagen",
+				"description": "Entdecken Sie Starter-Vorlagen für Next.js."
+			},
+			"card_4": {
+				"title": "Einsetzen",
+				"description": "Stellen Sie Ihre Next.js-Site sofort mit Vercel unter einer gemeinsam nutzbaren URL bereit."
+			}
+		}
+	},
+
+	"common_words": {
+		"by": "Von"
+	}
+}

@@ -7,6 +7,7 @@ import language from "@/lang/ptbr";
 import Footer from "@/components/home/Footer";
 import ApiService from "@/model/ApiService";
 import useErrorMessage from "@/hooks/useErrorMessage";
+import { useParams } from "next/navigation";
 
 export default function InitialPage() {
 	const [title, setTitle] = useState("heroes");
@@ -14,6 +15,7 @@ export default function InitialPage() {
 	const [difficultySlider, setDifficultySlider] = useState(10);
 	const [foundSongs, setFoundSongs] = useState([]);
 	const { addError } = useErrorMessage();
+	const locale = useParams().locale;
 
 	const search = async () => {
 		try {
@@ -51,7 +53,7 @@ export default function InitialPage() {
 			</div>
 			<ul className="flex  flex-wrap justify-center">
 				{foundSongs.map((song) => {
-					return <SongCard song={song} difficulty={difficultySlider} key={song.id} />;
+					return <SongCard song={song} difficulty={difficultySlider} key={song.id} songURL={`/${locale}/song`} />;
 				})}
 			</ul>
 			<Footer text={language.textDoneBy} />

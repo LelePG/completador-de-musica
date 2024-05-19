@@ -9,9 +9,10 @@ interface SongCardProps {
 		albumArt: string;
 	};
 	difficulty: number;
+	songURL: string;
 }
 
-export default function SongCard({ song, difficulty }: SongCardProps) {
+export default function SongCard({ song, difficulty, songURL }: SongCardProps) {
 	const { set } = useLocalStorage();
 
 	const setSong = () => {
@@ -35,7 +36,7 @@ export default function SongCard({ song, difficulty }: SongCardProps) {
 				height={210}
 				className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
 			/>
-			<Link onClick={() => setSong()} href="/song" className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center overflow-clip">
+			<Link onClick={() => setSong()} href={songURL} className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center overflow-clip">
 				<span className="text-xl max-w-fit text-center break-words text-white relative p-2 w-full">{song.title}</span>
 			</Link>
 		</li>
