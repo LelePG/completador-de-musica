@@ -6,21 +6,21 @@ import SearchInput from "@/components/template/SearchInput";
 import language from "@/lang/ptbr";
 import Footer from "@/components/home/Footer";
 import ApiService from "@/model/ApiService";
+import useErrorMessage from "@/hooks/useErrorMessage";
 
 export default function InitialPage() {
 	const [title, setTitle] = useState("heroes");
 	const [artist, setArtist] = useState("david");
 	const [difficultySlider, setDifficultySlider] = useState(10);
 	const [foundSongs, setFoundSongs] = useState([]);
-	const [error, setError] = useState(null);
+	const { addError } = useErrorMessage();
 
 	const search = async () => {
 		try {
 			const results = await ApiService.searchSong(title, artist);
 			setFoundSongs(results);
 		} catch (e) {
-			// console.log(error.message);
-			// setError(errorResponse);
+			addError(e);
 			setFoundSongs([]);
 		}
 	};
@@ -48,7 +48,6 @@ export default function InitialPage() {
 					</div>
 				</div>
 				<Button text="Pesquisar" callback={search} color="bg-blue-500 my-3 w-full" />
-				{error && <p>{error}</p>}
 			</div>
 			<ul className="flex  flex-wrap justify-center">
 				{foundSongs.map((song) => {

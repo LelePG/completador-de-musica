@@ -1,8 +1,7 @@
-import { useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import WordGapModel from "@/model/GapModel";
 import { Check, Bulb } from "@/components/template/Icons";
-import { InputContext } from "@/context/InputContext";
-
+import useInput from "@/hooks/useInput";
 interface GapProps {
 	gapWord: string;
 	gapIndex: number;
@@ -10,7 +9,7 @@ interface GapProps {
 
 export default function Gap(props: GapProps) {
 	const [currentGap, setCurrentGap] = useState(new WordGapModel(props.gapWord));
-	const { addRef } = useContext(InputContext);
+	const { addRef } = useInput();
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {

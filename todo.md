@@ -10,3 +10,4 @@ Tarefas ainda a serem feitas
 - corrigir o problema das setas ok
 - mudar imports pra usar @ ok
 - adicionar instruções
+- adicionar métricas da vercel

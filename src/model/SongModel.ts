@@ -23,6 +23,9 @@ export default class SongLyricsModel {
 	}
 
 	private formatter(songLyrics: string): FormattedGap[][] {
+		// if (!songLyrics) {
+		// 	throw new Error("Não conseguimos encontrar a letra dessa música, tente novamente");
+		// }
 		const lineIsValid = (line) => (this.hasBrackets(line) || this.hasCurlyBraces(line) || line.length <= 2 ? false : true);
 
 		const validLines = songLyrics?.split("\n").filter((line) => lineIsValid(line));

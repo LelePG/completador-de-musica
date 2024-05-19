@@ -8,11 +8,13 @@ import useLocalStorage from "@/hooks/useLocalStorage";
 import ApiService from "@/model/ApiService";
 import GithubLink from "@/components/template/GithubLink";
 import Loading from "@/components/template/Loading";
+import useErrorMessage from "@/hooks/useErrorMessage";
 
 export default function SongPage() {
 	const { get } = useLocalStorage();
 	const [song, setSong] = useState(null);
 	const router = useRouter();
+	const { addError } = useErrorMessage();
 
 	useEffect(() => {
 		(async () => {
@@ -22,10 +24,13 @@ export default function SongPage() {
 			}
 			try {
 				const lyrics = await ApiService.getSongLyrics(song?.title, song?.artist);
+				if (!lyrics) {
+					throw new Error("Lyrics not found. Return to home.");
+				}
 				const obj = { title: song?.title, artist: song?.artist, difficulty: song?.difficulty, lyrics };
 				setSong(obj);
-			} catch (error) {
-				console.error("Failed to get lyrics:", error);
+			} catch (e) {
+				addError(e);
 			}
 		})();
 	}, []);

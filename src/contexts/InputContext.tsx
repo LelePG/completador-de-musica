@@ -1,17 +1,17 @@
 import { Html } from "next/document";
 import React, { MutableRefObject, createContext, useEffect, useRef } from "react";
 
-interface InputContextProps {
+const InputContext = createContext<{
 	inputRefs: React.RefObject<Map<number, MutableRefObject<HTMLInputElement>>> | null;
 	addRef: (index: number, ref: MutableRefObject<HTMLInputElement>) => void;
-}
-
-export const InputContext = createContext<InputContextProps>({
+}>({
 	inputRefs: React.createRef<Map<number, MutableRefObject<HTMLInputElement>>>(),
 	addRef: () => {},
 });
 
-export default function ({ children }) {
+export default InputContext;
+
+export function InputContextProvider({ children }) {
 	const inputRefs = useRef(new Map<number, MutableRefObject<HTMLInputElement>>());
 
 	function addRef(index: number, ref: MutableRefObject<HTMLInputElement>) {

@@ -1,6 +1,6 @@
 import Gap from "@/components/song/Gap";
 import SongModel from "@/model/SongModel";
-import InputContext from "@/context/InputContext";
+import { InputContextProvider } from "@/contexts/InputContext";
 interface SongProps {
 	title: string;
 	artist: string;
@@ -31,7 +31,7 @@ export default function Song({ title, artist, lyrics, difficulty }: SongProps) {
 		<section className="flex flex-col flex-wrap border-black border-4 p-10 shadow-2xl rounded-md w-3/5 bg-neutral-100">
 			<h1 className="text-3xl font-bold place-self-center mb-4">{title}</h1>
 			<h2 className="text-2xl font-bold place-self-center mb-4">{artist}</h2>
-			<InputContext>{allLines}</InputContext>
+			<InputContextProvider>{allLines}</InputContextProvider>
 		</section>
 	);
 }
