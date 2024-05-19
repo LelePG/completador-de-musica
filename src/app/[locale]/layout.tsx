@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
-import { defaultLocale, supportedLocales } from "../../../i18n";
+import { defaultLocale } from "../../../i18n";
 import { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
@@ -21,6 +22,7 @@ export default async function RootLayout(props: Props) {
 	const messages = await getMessages();
 	return (
 		<html lang={params.locale || defaultLocale}>
+			<Analytics />
 			<body className="w-screen h-screen m-0 p-0 overflow-x-clip">
 				<NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
 			</body>
