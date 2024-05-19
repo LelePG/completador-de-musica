@@ -1,21 +1,21 @@
 "use client";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import Button from "@/components/template/Button";
 import SongCard from "@/components/home/SongCard";
 import SearchInput from "@/components/template/SearchInput";
-import language from "@/lang/ptbr";
 import Footer from "@/components/home/Footer";
 import ApiService from "@/model/ApiService";
 import useErrorMessage from "@/hooks/useErrorMessage";
-import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 
-export default function InitialPage() {
+export default function InitialPage(props: { params: { locale: string } }) {
 	const [title, setTitle] = useState("heroes");
 	const [artist, setArtist] = useState("david");
 	const [difficultySlider, setDifficultySlider] = useState(10);
 	const [foundSongs, setFoundSongs] = useState([]);
 	const { addError } = useErrorMessage();
-	const locale = useParams().locale;
+	const locale = props.params.locale;
+	const t = useTranslations();
 
 	const search = async () => {
 		try {
@@ -30,12 +30,12 @@ export default function InitialPage() {
 	return (
 		<div className="flex justify-center p-10 pt-20 ">
 			<div className="text-xl bg-gray-100 p-8 rounded-lg shadow-2xl shadow-gray-500 border-blue-500 border-2">
-				<h1 className="text-4xl font-bold my-5 text-center">{language.textMainTitle}</h1>
+				<h1 className="text-4xl font-bold my-5 text-center">{t("homePage.searchTitle")}</h1>
 				<div className="flex flex-col flex-wrap my-4 min-w-max">
-					<SearchInput value={title} textLabel={language.textSongTitle} callback={setTitle} defaultText="Heroes" />
-					<SearchInput value={artist} textLabel={language.textSongAuthor} callback={setArtist} defaultText="David Bowie" />
+					<SearchInput value={title} textLabel={`${t("homePage.songTitle")}:`} callback={setTitle} defaultText="Heroes" />
+					<SearchInput value={artist} textLabel={`${t("homePage.songAuthor")}:`} callback={setArtist} defaultText="David Bowie" />
 					<div className="flex align-center gap-3 my-3">
-						<label>{language.textDifficulty} </label>
+						<label>{`${t("homePage.songDifficulty")}:`} </label>
 						<input
 							type="range"
 							name="difficulty"
@@ -56,7 +56,7 @@ export default function InitialPage() {
 					return <SongCard song={song} difficulty={difficultySlider} key={song.id} songURL={`/${locale}/song`} />;
 				})}
 			</ul>
-			<Footer text={language.textDoneBy} />
+			<Footer text={t("homePage.madeBy")} />
 		</div>
 	);
 }

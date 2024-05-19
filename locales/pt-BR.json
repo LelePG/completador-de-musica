@@ -1,0 +1,29 @@
+{
+	"homePage": {
+		"searchTitle": "Pesquise pela música",
+		"songTitle": "Título",
+		"songAuthor": "Autor",
+		"songDifficulty": "Dificuldade",
+		"madeBy": "Feito com 🪄 por LelePG"
+	},
+	"errors": {
+		"followingProblems": "Os seguintes problemas foram encontrados:",
+		"songTitleNotInformed": "O título da música não foi informado.",
+		"songAuthorNotInformed": "O artista não foi informado",
+		"apiKeyIncorrect": "A chave da API está incorreta",
+		"unknownProblem": "Houve um problema desconhecido"
+	},
+	"songPage": {
+		"buttons": {
+			"correctAll": "Corrigir",
+			"clearAll": "Limpar",
+			"showAll": "Mostrar",
+			"hideAll": "Ocultar",
+			"resort": "Resortear",
+			"back": "Voltar"
+		}
+	},
+	"common_words": {
+		"by": "Von"
+	}
+}

@@ -2,19 +2,19 @@
 import Button from "@/components/template/Button";
 import Song from "@/components/song/Song";
 import { useRouter } from "next/navigation";
-import language from "@/lang/ptbr";
 import { useCallback, useEffect, useState } from "react";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import ApiService from "@/model/ApiService";
 import GithubLink from "@/components/template/GithubLink";
 import Loading from "@/components/template/Loading";
 import useErrorMessage from "@/hooks/useErrorMessage";
-
+import { useTranslations } from "next-intl";
 export default function SongPage() {
 	const { get } = useLocalStorage();
 	const [song, setSong] = useState(null);
 	const router = useRouter();
 	const { addError } = useErrorMessage();
+	const t = useTranslations();
 
 	useEffect(() => {
 		(async () => {
@@ -53,12 +53,12 @@ export default function SongPage() {
 				<>
 					<Song title={song?.title} artist={song?.artist} lyrics={song?.lyrics} difficulty={parseInt(String(song?.difficulty))} />
 					<section className="fixed bottom-3 w-10/12 h-25 flex justify-center flex-wrap ">
-						<Button text={language.textCorrect} callback={callbackCorrect} color="bg-red-500" />
-						<Button text={language.textCleanAll} callback={callbackClean} color="bg-yellow-500" />
-						<Button text={language.textShowAll} callback={callbackShow} color="bg-indigo-500" />
-						<Button text={language.textHideAll} callback={callbackHide} color="bg-green-500" />
-						<Button text={language.textReload} callback={callbackReload} color="bg-pink-500" />
-						<Button text={language.textGoBack} callback={callbackGoBack} color="bg-blue-500" />
+						<Button text={t("songPage.buttons.correctAll")} callback={callbackCorrect} color="bg-red-500" />
+						<Button text={t("songPage.buttons.clearAll")} callback={callbackClean} color="bg-yellow-500" />
+						<Button text={t("songPage.buttons.showAll")} callback={callbackShow} color="bg-indigo-500" />
+						<Button text={t("songPage.buttons.hideAll")} callback={callbackHide} color="bg-green-500" />
+						<Button text={t("songPage.buttons.resort")} callback={callbackReload} color="bg-pink-500" />
+						<Button text={t("songPage.buttons.back")} callback={callbackGoBack} color="bg-blue-500" />
 						<GithubLink />
 					</section>
 				</>

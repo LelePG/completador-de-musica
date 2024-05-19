@@ -3,7 +3,8 @@ import { defaultLocale, supportedLocales } from "../../../i18n";
 import { ReactNode } from "react";
 
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 export const metadata: Metadata = {
 	title: "Home",
@@ -15,12 +16,14 @@ interface Props {
 	params: { locale: string };
 }
 
-export default function RootLayout(props: Props) {
+export default async function RootLayout(props: Props) {
 	const { children, params } = props;
-
+	const messages = await getMessages();
 	return (
 		<html lang={params.locale || defaultLocale}>
-			<body className="w-screen h-screen m-0 p-0 overflow-x-clip">{children}</body>
+			<body className="w-screen h-screen m-0 p-0 overflow-x-clip">
+				<NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+			</body>
 		</html>
 	);
 }
