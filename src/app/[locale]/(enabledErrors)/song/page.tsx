@@ -46,20 +46,21 @@ export default function SongPage() {
 	const callbackReload = () => window.location.reload();
 	const callbackGoBack = useCallback(() => router.push("/"), [router]);
 
+	const buttonClassname = " p-3 m-1 lg:px-4 lg:py-3 lg:m-2 xl:px-6 xl:py-4 xl:text-2xl ";
+
 	return (
-		<div className="flex justify-center pb-24 pt-8 overflow-x-hidden">
+		<div className="flex justify-center pb-24 md:pb-36 xl:pb-16 pt-8 overflow-x-hidden">
 			{song === null && <Loading />}
 			{song !== null && (
 				<>
 					<Song title={song?.title} artist={song?.artist} lyrics={song?.lyrics} difficulty={parseInt(String(song?.difficulty))} />
-					<section className="fixed bottom-3 w-10/12 h-25 flex justify-center flex-wrap ">
-						<Button text={t("songPage.buttons.correctAll")} callback={callbackCorrect} color="bg-red-500" />
-						<Button text={t("songPage.buttons.clearAll")} callback={callbackClean} color="bg-yellow-500" />
-						<Button text={t("songPage.buttons.showAll")} callback={callbackShow} color="bg-indigo-500" />
-						<Button text={t("songPage.buttons.hideAll")} callback={callbackHide} color="bg-green-500" />
-						<Button text={t("songPage.buttons.resort")} callback={callbackReload} color="bg-pink-500" />
-						<Button text={t("songPage.buttons.back")} callback={callbackGoBack} color="bg-blue-500" />
-						<GithubLink />
+					<section className="fixed bottom-5 md:bottom-6 w-full md:w-10/12 md:h-25 flex justify-center flex-wrap mb-3 md:mb-10 lg:mb-6 ">
+						<Button text={t("songPage.buttons.correctAll")} callback={callbackCorrect} color="bg-red-500" className={buttonClassname} />
+						<Button text={t("songPage.buttons.clearAll")} callback={callbackClean} color="bg-yellow-500" className={buttonClassname} />
+						<Button text={t("songPage.buttons.showAll")} callback={callbackShow} color="bg-indigo-500" className={buttonClassname} />
+						<Button text={t("songPage.buttons.hideAll")} callback={callbackHide} color="bg-green-500" className={buttonClassname} />
+						<Button text={t("songPage.buttons.resort")} callback={callbackReload} color="bg-pink-500" className={buttonClassname} />
+						<Button text={t("songPage.buttons.back")} callback={callbackGoBack} color="bg-blue-500" className={buttonClassname} />
 					</section>
 				</>
 			)}

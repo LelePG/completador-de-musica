@@ -23,7 +23,7 @@ export default async function RootLayout(props: Props) {
 	return (
 		<html lang={params.locale || defaultLocale}>
 			<Analytics />
-			<body className="w-screen h-screen m-0 p-0 overflow-x-clip">
+			<body className="w-full h-full m-0 p-0 overflow-x-clip">
 				<NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
 			</body>
 		</html>

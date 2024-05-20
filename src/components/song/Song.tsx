@@ -21,16 +21,16 @@ export default function Song({ title, artist, lyrics, difficulty }: SongProps) {
 	const allLines = song.formattedSong?.map((line, lineIndex) => {
 		const wordsInLine = line.map((word, index) => chooseView(word, index, lineIndex));
 		return (
-			<div key={lineIndex} className="flex flex-wrap whitespace-pre my-3 text-xl">
+			<div key={lineIndex} className="flex flex-wrap whitespace-pre my-2 md:my-3 text-xl md:text-2xl">
 				{wordsInLine}
 			</div>
 		);
 	});
 
 	return (
-		<section className="flex flex-col flex-wrap border-black border-4 p-10 shadow-2xl rounded-md w-3/5 bg-neutral-100">
-			<h1 className="text-3xl font-bold place-self-center mb-4">{title}</h1>
-			<h2 className="text-2xl font-bold place-self-center mb-4">{artist}</h2>
+		<section className="flex flex-col flex-wrap border-black border-2 md:border-4 p-5 md:p-10 shadow-2xl rounded-md md:w-4/5 xl:w-3/5 m-3 bg-neutral-100">
+			<h1 className="text-xl md:text-4xl font-bold place-self-center mb-2 md:mb-4">{title}</h1>
+			<h2 className="text-lg md:text-3xl font-bold place-self-center mb-2 md:mb-4">{artist}</h2>
 			<InputContextProvider>{allLines}</InputContextProvider>
 		</section>
 	);
