@@ -18,16 +18,12 @@ export default function Gap(props: GapProps) {
 
 	const toggleVisibility = useCallback(() => setCurrentGap(currentGap.toggleVisibility()), [currentGap]);
 	const updateText = useCallback((texto: string) => setCurrentGap(currentGap.updateText(texto)), [currentGap]);
+	const correct = useCallback(() => setCurrentGap(currentGap.correct("bg-green-300", "bg-red-300")), [currentGap]);
+	const clean = useCallback(() => setCurrentGap(currentGap.clean()), [currentGap]);
+	const open = useCallback(() => setCurrentGap(currentGap.open()), [currentGap]);
+	const close = useCallback(() => setCurrentGap(currentGap.close()), [currentGap]);
 
-	const eventHandlers = useMemo(
-		() => ({
-			correct: () => setCurrentGap(currentGap.correct("bg-green-300", "bg-red-300")),
-			clean: () => setCurrentGap(currentGap.clean()),
-			open: () => setCurrentGap(currentGap.open()),
-			close: () => setCurrentGap(currentGap.close()),
-		}),
-		[currentGap]
-	);
+	const eventHandlers = { correct, clean, open, close };
 
 	useEffect(() => {
 		const events = Object.keys(eventHandlers);

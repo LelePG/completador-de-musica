@@ -1,12 +1,13 @@
-interface FormattedGap {
+export interface FormattedWords {
 	text: string;
 	gap: boolean;
+	gapIndex?: number;
 }
 
-export default class SongLyricsModel {
+export default class SongModel {
 	private _songLyrics: string;
 	private _difficulty: number;
-	private _formattedSong: FormattedGap[][];
+	private _formattedSong: FormattedWords[][];
 
 	constructor(songLyrics: string, difficulty: number) {
 		this._songLyrics = songLyrics;
@@ -22,7 +23,7 @@ export default class SongLyricsModel {
 		return text.startsWith("{") || text.endsWith("}");
 	}
 
-	private formatter(songLyrics: string): FormattedGap[][] {
+	private formatter(songLyrics: string): FormattedWords[][] {
 		const lineIsValid = (line) => (this.hasBrackets(line) || this.hasCurlyBraces(line) || line.length <= 2 ? false : true);
 
 		const validLines = songLyrics?.split("\n").filter((line) => lineIsValid(line));
