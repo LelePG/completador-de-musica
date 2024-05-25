@@ -13,16 +13,16 @@ interface SongCardProps {
 }
 
 export default function SongCard({ song, difficulty, songURL }: SongCardProps) {
-	const { set } = useLocalStorage();
+	const { setToLS } = useLocalStorage();
 
 	const setSong = () => {
-		const songTitleAndAuthor = String(song?.title).split("by");
-		const title = songTitleAndAuthor[0]?.trim().toUpperCase();
-		const artist = songTitleAndAuthor[1]?.trim().toUpperCase();
+		const songTitleAndAuthor = String(song?.title)
+			.split("by")
+			.map((text) => text.trim().toUpperCase());
 
-		set({
-			title,
-			artist,
+		setToLS({
+			title: songTitleAndAuthor[0],
+			artist: songTitleAndAuthor[1],
 			difficulty,
 		});
 	};

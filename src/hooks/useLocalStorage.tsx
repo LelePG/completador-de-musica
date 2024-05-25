@@ -1,13 +1,13 @@
 type ItemType = {
 	title: string;
-    artist: string;
+	artist: string;
 	difficulty: number;
 };
 
 export default function useLocalStorage() {
 	const key = "song_info";
 
-	const get = () => {
+	const getFromLS = () => {
 		if (typeof window !== "undefined") {
 			const item = window.localStorage.getItem(key);
 			if (item) {
@@ -17,17 +17,17 @@ export default function useLocalStorage() {
 		return null;
 	};
 
-	const set = (value: ItemType) => {
+	const setToLS = (value: ItemType) => {
 		if (typeof window !== "undefined") {
 			window.localStorage.setItem(key, JSON.stringify(value));
 		}
 	};
 
-	const remove = () => {
+	const removeFromLS = () => {
 		if (typeof window !== "undefined") {
 			window.localStorage.removeItem(key);
 		}
 	};
 
-	return { get, set, remove };
+	return { getFromLS, setToLS, removeFromLS };
 }
