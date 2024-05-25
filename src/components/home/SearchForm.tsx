@@ -10,7 +10,7 @@ interface SearchFormProps {
 	children: any;
 }
 
-export default function ({ setSongs, children }: SearchFormProps) {
+export default function SearchForm({ setSongs, children }: SearchFormProps) {
 	const [title, setTitle] = useState("");
 	const [artist, setArtist] = useState("");
 	const { addError } = useErrorMessage();

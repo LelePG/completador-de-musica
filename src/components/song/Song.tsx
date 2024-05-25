@@ -13,7 +13,7 @@ export default function Song({ title, artist, lyrics, difficulty }: SongProps) {
 	const song = new SongModel(lyrics, difficulty);
 
 	const allLines = song.formattedSong?.map((line, lineIndex) => {
-		return <SongLine line={line} lineIndex={lineIndex} />;
+		return <SongLine line={line} lineIndex={lineIndex} key={lineIndex} />;
 	});
 
 	return (
