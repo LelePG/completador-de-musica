@@ -1,5 +1,5 @@
 "use client";
-import Footer from "@/components/home/Footer";
+import Footer from "@/components/template/Footer";
 import ErrorPopup from "@/components/template/ErrorPopup";
 import { ErrorMessageProvider } from "@/contexts/ErrorMessageContext";
 import { useTranslations } from "next-intl";

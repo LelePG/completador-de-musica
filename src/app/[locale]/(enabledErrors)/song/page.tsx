@@ -4,8 +4,7 @@ import Song from "@/components/song/Song";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import useLocalStorage from "@/hooks/useLocalStorage";
-import ApiService from "@/model/ApiService";
-import GithubLink from "@/components/template/GithubLink";
+import { getSongLyrics } from "@/actions/Api";
 import Loading from "@/components/template/Loading";
 import useErrorMessage from "@/hooks/useErrorMessage";
 import { useTranslations } from "next-intl";
@@ -23,13 +22,14 @@ export default function SongPage() {
 				router.push("/");
 			}
 			try {
-				const lyrics = await ApiService.getSongLyrics(song?.title, song?.artist);
+				const lyrics = await getSongLyrics(song?.title, song?.artist);
 				if (!lyrics) {
 					throw new Error(t("errors.lyricsNotFoundReturnHome"));
 				}
 				const obj = { title: song?.title, artist: song?.artist, difficulty: song?.difficulty, lyrics };
 				setSong(obj);
 			} catch (e) {
+				console.log(e);
 				addError(e);
 			}
 		})();

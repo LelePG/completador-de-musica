@@ -2,15 +2,14 @@
 import { useState } from "react";
 import Button from "@/components/template/Button";
 import SongCard from "@/components/home/SongCard";
-import SearchInput from "@/components/template/SearchInput";
-import Footer from "@/components/home/Footer";
-import ApiService from "@/model/ApiService";
+import SearchInput from "@/components/home/SearchInput";
 import useErrorMessage from "@/hooks/useErrorMessage";
 import { useTranslations } from "next-intl";
+import { searchSong } from "@/actions/Api";
 
 export default function InitialPage(props: { params: { locale: string } }) {
-	const [title, setTitle] = useState("");
-	const [artist, setArtist] = useState("");
+	const [title, setTitle] = useState("heroes");
+	const [artist, setArtist] = useState("david");
 	const [difficultySlider, setDifficultySlider] = useState(10);
 	const [foundSongs, setFoundSongs] = useState([]);
 	const { addError } = useErrorMessage();
@@ -19,7 +18,7 @@ export default function InitialPage(props: { params: { locale: string } }) {
 
 	const search = async () => {
 		try {
-			const results = await ApiService.searchSong(title, artist);
+			const results = await searchSong(title, artist);
 			setFoundSongs(results);
 		} catch (e) {
 			if (e.toString().includes("title")) {
