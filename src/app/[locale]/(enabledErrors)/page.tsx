@@ -9,8 +9,8 @@ import useErrorMessage from "@/hooks/useErrorMessage";
 import { useTranslations } from "next-intl";
 
 export default function InitialPage(props: { params: { locale: string } }) {
-	const [title, setTitle] = useState("heroes");
-	const [artist, setArtist] = useState("david");
+	const [title, setTitle] = useState("");
+	const [artist, setArtist] = useState("");
 	const [difficultySlider, setDifficultySlider] = useState(10);
 	const [foundSongs, setFoundSongs] = useState([]);
 	const { addError } = useErrorMessage();
