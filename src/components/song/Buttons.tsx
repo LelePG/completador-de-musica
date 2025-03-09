@@ -1,5 +1,5 @@
 import Button from "@/components/template/Button";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@i18n/navigation";
 import { useCallback } from "react";
 import { useTranslations } from "next-intl";
 

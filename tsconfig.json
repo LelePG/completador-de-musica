@@ -15,7 +15,8 @@
 		"isolatedModules": true,
 		"jsx": "preserve",
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["./src/*"],
+			"@i18n/*": ["./i18n/*"]
 		},
 		"plugins": [
 			{

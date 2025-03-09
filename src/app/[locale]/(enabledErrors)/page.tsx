@@ -8,7 +8,6 @@ export default function InitialPage() {
 	const [difficultySlider, setDifficultySlider] = useState(10);
 	const [foundSongs, setFoundSongs] = useState([]);
 	const t = useTranslations();
-	const locale = "pt-BR";
 
 	return (
 		<div className="flex flex-col xl:flex-row justify-center p-5 md:p-10 xl:p-20">
@@ -29,7 +28,7 @@ export default function InitialPage() {
 			</SearchForm>
 			<ul className="flex  flex-wrap justify-center">
 				{foundSongs.map((song) => {
-					return <SongCard song={song} difficulty={difficultySlider} key={song.id} songURL={`/${locale}/song`} />;
+					return <SongCard song={song} difficulty={difficultySlider} key={song.id} />;
 				})}
 			</ul>
 		</div>

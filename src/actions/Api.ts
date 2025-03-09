@@ -1,4 +1,5 @@
 "use server";
+import { PartialSongDTO } from "@/types/SongDTO";
 import { Client } from "genius-lyrics";
 
 const client = new Client(process.env.NEXT_PUBLIC_CLIENT_ACCESS_TOKEN);
@@ -20,4 +21,13 @@ export async function searchSong(title: string, artist: string) {
 export async function getSongLyrics(id: string) {
 	const song = await client.songs.get(parseInt(id));
 	return song.lyrics();
+}
+
+export async function getSongLyricsAndInfo(id: string): Promise<PartialSongDTO> {
+	const song = await client.songs.get(parseInt(id));
+	return {
+		title: song.title,
+		artist: song.artist.name,
+		lyrics: await song.lyrics(),
+	};
 }

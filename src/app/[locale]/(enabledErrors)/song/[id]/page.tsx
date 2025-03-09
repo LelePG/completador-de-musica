@@ -1,33 +1,31 @@
 "use client";
 import Song from "@/components/song/Song";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import useLocalStorage from "@/hooks/useLocalStorage";
-import { getSongLyrics } from "@/actions/Api";
+import { getSongLyricsAndInfo } from "@/actions/Api";
 import Loading from "@/components/template/Loading";
 import useErrorMessage from "@/hooks/useErrorMessage";
 import { useTranslations } from "next-intl";
 import Buttons from "@/components/song/Buttons";
+import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { SongDTO } from "@/types/SongDTO";
 
 export default function SongPage() {
-	const { getFromLS } = useLocalStorage();
-	const [song, setSong] = useState(null);
-	const router = useRouter();
+	const { id } = useParams();
+	const searchParams = useSearchParams();
+	const difficulty = searchParams.get("difficulty");
+	const [song, setSong] = useState<SongDTO | null>(null);
 	const { addError } = useErrorMessage();
 	const t = useTranslations();
 
 	useEffect(() => {
 		(async () => {
-			const song = getFromLS();
-			if (song === null) {
-				router.push("/");
-			}
 			try {
-				const lyrics = await getSongLyrics(song?.id);
-				if (!lyrics) {
+				const song = await getSongLyricsAndInfo(id as string);
+				if (!song.lyrics) {
 					throw new Error(t("errors.lyricsNotFoundReturnHome"));
 				}
-				const obj = { title: song?.title, artist: song?.artist, difficulty: song?.difficulty, lyrics };
+				const obj: SongDTO = { ...song, difficulty: +difficulty };
 				setSong(obj);
 			} catch (e) {
 				addError(e);
@@ -40,7 +38,7 @@ export default function SongPage() {
 			{song === null && <Loading />}
 			{song !== null && (
 				<>
-					<Song title={song?.title} artist={song?.artist} lyrics={song?.lyrics} difficulty={parseInt(String(song?.difficulty))} />
+					<Song song={song} />
 					<Buttons />
 				</>
 			)}

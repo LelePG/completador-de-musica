@@ -1,18 +1,17 @@
 import SongModel from "@/model/SongModel";
 import { InputContextProvider } from "@/contexts/InputContext";
 import SongLine from "./SongLine";
+import { SongDTO } from "@/types/SongDTO";
 
 interface SongProps {
-	title: string;
-	artist: string;
-	lyrics: string;
-	difficulty: number;
+	song: SongDTO;
 }
 
-export default function Song({ title, artist, lyrics, difficulty }: SongProps) {
-	const song = new SongModel(lyrics, difficulty);
+export default function Song({ song }: SongProps) {
+	const { title, artist, lyrics, difficulty } = song;
+	const songModel = new SongModel(lyrics, difficulty);
 
-	const allLines = song.formattedSong?.map((line, lineIndex) => {
+	const allLines = songModel.formattedSong?.map((line, lineIndex) => {
 		return <SongLine line={line} lineIndex={lineIndex} key={lineIndex} />;
 	});
 
