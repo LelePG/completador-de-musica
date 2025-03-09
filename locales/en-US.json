@@ -1,0 +1,28 @@
+{
+	"homePage": {
+		"searchTitle": "Search for the song",
+		"songTitle": "Title",
+		"songAuthor": "Author",
+		"songDifficulty": "Difficulty",
+		"madeBy": "Made with 🪄 by LelePG"
+	},
+	"errors": {
+		"error": "Error",
+		"followingProblems": "The following problems were found:",
+		"songTitleNotInformed": "The song title was not informed.",
+		"songAuthorNotInformed": "The artist was not informed",
+		"apiKeyIncorrect": "The API key is incorrect",
+		"unknownProblem": "There was an unknown problem",
+		"lyricsNotFoundReturnHome": "Lyrics not found, return to the home page"
+	},
+	"songPage": {
+		"buttons": {
+			"correctAll": "Correct",
+			"clearAll": "Clear",
+			"showAll": "Show",
+			"hideAll": "Hide",
+			"resort": "Reshuffle",
+			"back": "Back"
+		}
+	}
+}

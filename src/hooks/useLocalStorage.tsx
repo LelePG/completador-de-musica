@@ -1,6 +1,7 @@
 type ItemType = {
 	title: string;
 	artist: string;
+	id: number | string;
 	difficulty: number;
 };
 

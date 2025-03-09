@@ -1,18 +1,23 @@
 "use server";
-import { searchSong as searchSongAPI, getLyrics } from "genius-lyrics-api";
+import { Client } from "genius-lyrics";
 
-const options = (title: string, artist: string) => {
-	return {
-		apiKey: process.env.NEXT_PUBLIC_CLIENT_ACCESS_TOKEN,
-		title,
-		artist,
-	};
-};
+const client = new Client(process.env.NEXT_PUBLIC_CLIENT_ACCESS_TOKEN);
 
 export async function searchSong(title: string, artist: string) {
-	return searchSongAPI(options(title, artist));
+	const songs = await client.songs.search(title, { sanitizeQuery: true });
+	const formattedSongs = songs.map((song) => {
+		return {
+			title: song.title,
+			artist: song.artist.name,
+			url: song.url,
+			id: song.id,
+			albumArt: song.thumbnail,
+		};
+	});
+	return formattedSongs;
 }
 
-export async function getSongLyrics(title: string, artist: string) {
-	return await getLyrics(options(title, artist));
+export async function getSongLyrics(id: string) {
+	const song = await client.songs.get(parseInt(id));
+	return song.lyrics();
 }

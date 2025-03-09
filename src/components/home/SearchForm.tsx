@@ -11,8 +11,8 @@ interface SearchFormProps {
 }
 
 export default function SearchForm({ setSongs, children }: SearchFormProps) {
-	const [title, setTitle] = useState("");
-	const [artist, setArtist] = useState("");
+	const [title, setTitle] = useState("heroes");
+	const [artist, setArtist] = useState("david bowie");
 	const { addError } = useErrorMessage();
 	const t = useTranslations();
 

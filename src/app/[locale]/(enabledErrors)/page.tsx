@@ -4,11 +4,11 @@ import SongCard from "@/components/home/SongCard";
 import { useTranslations } from "next-intl";
 import SearchForm from "@/components/home/SearchForm";
 
-export default function InitialPage(props: { params: { locale: string } }) {
+export default function InitialPage() {
 	const [difficultySlider, setDifficultySlider] = useState(10);
 	const [foundSongs, setFoundSongs] = useState([]);
-	const locale = props.params.locale;
 	const t = useTranslations();
+	const locale = "pt-BR";
 
 	return (
 		<div className="flex flex-col xl:flex-row justify-center p-5 md:p-10 xl:p-20">

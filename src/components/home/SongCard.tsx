@@ -23,6 +23,7 @@ export default function SongCard({ song, difficulty, songURL }: SongCardProps) {
 		setToLS({
 			title: songTitleAndAuthor[0],
 			artist: songTitleAndAuthor[1],
+			id: song.id,
 			difficulty,
 		});
 	};

@@ -23,7 +23,7 @@ export default function SongPage() {
 				router.push("/");
 			}
 			try {
-				const lyrics = await getSongLyrics(song?.title, song?.artist);
+				const lyrics = await getSongLyrics(song?.id);
 				if (!lyrics) {
 					throw new Error(t("errors.lyricsNotFoundReturnHome"));
 				}
