@@ -4,7 +4,10 @@ import { Client } from "genius-lyrics";
 
 const client = new Client(process.env.NEXT_PUBLIC_CLIENT_ACCESS_TOKEN);
 
-export async function searchSong(title: string, artist: string) {
+export async function searchSong(title: string) {
+	if (!title) {
+		throw new Error("empty title");
+	}
 	const songs = await client.songs.search(title, { sanitizeQuery: true });
 	const formattedSongs = songs.map((song) => {
 		return {

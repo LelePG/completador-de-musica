@@ -11,20 +11,17 @@ interface SearchFormProps {
 }
 
 export default function SearchForm({ setSongs, children }: SearchFormProps) {
-	const [title, setTitle] = useState("heroes");
-	const [artist, setArtist] = useState("david bowie");
+	const [title, setTitle] = useState("");
 	const { addError } = useErrorMessage();
 	const t = useTranslations();
 
 	const search = async () => {
 		try {
-			const results = await searchSong(title, artist);
+			const results = await searchSong(title);
 			setSongs(results);
 		} catch (e) {
-			if (e.toString().includes("title")) {
+			if (e.toString().includes("empty title")) {
 				addError(new Error(t("errors.songTitleNotInformed")));
-			} else if (e.toString().includes("artist")) {
-				addError(new Error(t("errors.songAuthorNotInformed")));
 			} else {
 				addError(new Error(t("errors.unknownProblem")));
 			}
@@ -37,7 +34,6 @@ export default function SearchForm({ setSongs, children }: SearchFormProps) {
 			<h1 className="text-2xl md:text-4xl font-bold my-2 md:my-5 text-center">{t("homePage.searchTitle")}</h1>
 			<div className="flex flex-col flex-wrap my-4 ">
 				<SearchInput value={title} textLabel={`${t("homePage.songTitle")}:`} callback={setTitle} defaultText="Heroes" />
-				<SearchInput value={artist} textLabel={`${t("homePage.songAuthor")}:`} callback={setArtist} defaultText="David Bowie" />
 				{children}
 			</div>
 			<Button text="Pesquisar" callback={search} className="bg-blue-500 w-full h-16 px-6" />
