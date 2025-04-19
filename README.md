@@ -9,9 +9,7 @@ Este projeto é uma aplicação web desenvolvida com os frameworks Next.js e Tai
 
 ## 🖥️ Como rodar este projeto?
 
-Para iniciar a aplicação localmente, é preciso baixar este repositório (seja pelas opções de clone do Github ou através de um arquivo .zip) e modificar o arquivo chamado de **MODELO.env.local**. Esse arquivo precisa ser renomeado para **.env.local** e o valor da variável presente neste arquivo deve ser alterado para um valor válido de **client access token** obtido na Genius API, base para do pacote utilizado para obter as letras. A documentação pode ser acessada [clicando aqui](https://docs.genius.com/).
-
-Depois disso, na página principal do projeto será preciso rodar os comandos `npm i` para instalar as dependências e `npm run dev` para iniciar o projeto. Depois da compilação, o projeto estará disponível localmente através do endereço `localhost:3000`.
+Para iniciar a aplicação localmente, é preciso baixar este repositório (seja pelas opções de clone do Github ou através de um arquivo .zip). Depois disso, na página principal do projeto será preciso rodar os comandos `npm i` para instalar as dependências e `npm run dev` para iniciar o projeto. Depois da compilação, o projeto estará disponível localmente através do endereço `localhost:3000`.
 
 _Obs: A porta 3000 é a porta padrão, mas recomendo que você veja em qual porta o projeto realmente será rodado através do terminal onde o comando `npm run dev` foi usado._
 
@@ -19,7 +17,7 @@ Caso você queira acessar o projeto online, [clique aqui](https://completemusica
 
 ## 🤔 Como utilizar este projeto?
 
-Na página inicial da aplicação você deve colocar o nome da música e da pessoa ou banda a qual esta música está associada. Nesta tela inicial você também pode selecionar a dificuldade da música. quanto maior a dificuldade, mais lacunas irão aparecer para que você complete. Uma vez que o nome e a autoria da música tenham sido selecionados, você deve clicar no botão de pesquisa. Isso fará com que uma lista com os resultados para a sua busca seja renderizada, e então basta clicar sobre o card que contém a música desejada, e aqui vale notar que como as músicas são obtidas através da API, músicas em vários idiomas estão disponíveis. Uma vez que você tenha clicado no card da música, a aplicação fará a navegação para a página de letra da música, que tem a interface abaixo:
+Na página inicial da aplicação você pode fazer a sua pesquisa pela música colocando o nome da música ou da pessoa ou banda a qual esta música está associada. Nesta tela inicial você também pode selecionar a dificuldade da música. quanto maior a dificuldade, mais lacunas irão aparecer para que você complete. Uma vez que você clique em pesquisar, uma lista com os resultados para a sua busca seja renderizada, e então basta clicar sobre o card que contém a música desejada, e aqui vale notar que como as músicas são obtidas através da API, músicas em vários idiomas estão disponíveis. Uma vez que você tenha clicado no card da música, a aplicação fará a navegação para a página de letra da música, que tem a interface abaixo:
 
 ![Interface visual](images/interface.png)
 
@@ -47,5 +45,4 @@ Se você quer fazer alguma coisa, mas não sabe o que fazer, pode dar uma olhada
 - [Deploy da aplicação](https://completador-de-musica.vercel.app/)
 - [Documentação Next.js](https://nextjs.org/docs)
 - [Documentação Tailwind](https://tailwindcss.com/docs/installation)
-- [Documentação Genius API](https://docs.genius.com/#/getting-started-h1)
-- [Documentação do pacote que interage com a API usado no projeto](https://www.npmjs.com/package/genius-lyrics-api)
+- [Documentação do pacote que interage com a API usado no projeto](https://www.npmjs.com/package/musicxmatch-api)
