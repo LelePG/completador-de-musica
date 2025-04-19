@@ -4,7 +4,8 @@
 		"songTitle": "Título",
 		"songAuthor": "Autor",
 		"songDifficulty": "Dificuldade",
-		"madeBy": "Feito com 🪄 por LelePG"
+		"madeBy": "Feito com 🪄 por LelePG",
+		"query": "Pesquisa"
 	},
 	"errors": {
 		"error": "Erro",
@@ -13,7 +14,8 @@
 		"songAuthorNotInformed": "O artista não foi informado",
 		"apiKeyIncorrect": "A chave da API está incorreta",
 		"unknownProblem": "Houve um problema desconhecido",
-		"lyricsNotFoundReturnHome": "Letra não encontrada, volte para a página inicial"
+		"lyricsNotFoundReturnHome": "Letra não encontrada, volte para a página inicial",
+		"emptyQuery": "A pesquisa está inválida"
 	},
 	"songPage": {
 		"buttons": {

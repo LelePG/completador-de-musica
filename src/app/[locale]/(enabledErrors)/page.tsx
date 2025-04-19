@@ -5,30 +5,17 @@ import { useTranslations } from "next-intl";
 import SearchForm from "@/components/home/SearchForm";
 
 export default function InitialPage() {
-	const [difficultySlider, setDifficultySlider] = useState(10);
 	const [foundSongs, setFoundSongs] = useState([]);
-	const t = useTranslations();
+	const [query, setQuery] = useState("");
+	const [difficultySlider, setDifficultySlider] = useState(10);
 
 	return (
 		<div className="flex flex-col xl:flex-row justify-center p-5 md:p-10 xl:p-20">
-			<SearchForm setSongs={setFoundSongs}>
-				<div className="flex flex-col md:flex-row align-center gap-3 my-3">
-					<label>{`${t("homePage.songDifficulty")}:`} </label>
-					<input
-						type="range"
-						name="difficulty"
-						min="10"
-						max="90"
-						value={difficultySlider}
-						step="5"
-						onChange={(e) => setDifficultySlider(parseInt(e.target.value))}
-					/>
-					<label className="font-semibold text-center">{difficultySlider}</label>
-				</div>
-			</SearchForm>
+			<SearchForm setSongs={setFoundSongs} difficultySlider={difficultySlider} setDifficultySlider={setDifficultySlider} query={query} setQuery={setQuery} />
+
 			<ul className="flex  flex-wrap justify-center">
 				{foundSongs.map((song) => {
-					return <SongCard song={song} difficulty={difficultySlider} key={song.id} />;
+					return <SongCard song={song} key={song.id} difficulty={difficultySlider} />;
 				})}
 			</ul>
 		</div>
